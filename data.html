@@ -1,0 +1,71 @@
+<html>
+    <head>
+        <title>COVID Monitor</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+        <script
+          src="https://code.jquery.com/jquery-3.6.1.min.js"
+          integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+          crossorigin="anonymous"></script>
+        <link rel="stylesheet" type="text/css" href="css/site.css"/>
+        <script src="https://d3js.org/d3.v7.min.js"></script>
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
+        <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>      
+    </head>
+    <body>
+        <div id="content" class="container-fluid">
+            <div class="row">
+                <div class="col-md-3 level1nav">
+                    <h2>Top level Nav</h2>
+                    <div>
+                        <button class="btn topframenav" data-id="frame_1">Frame 1</button>
+                    </div>
+                    <div>
+                        <button class="btn topframenav" data-id="frame_2">Frame 2</button>
+                    </div>
+                    <div>
+                        <button class="btn topframenav" data-id="frame_3">Frame 3</button>
+                    </div>
+                    <div>
+                        <button class="btn topframenav" data-id="frame_4">Frame 4</button>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div id="frame_1" class="row frame">
+                        <div id="frame1nav" class="col-md-4 level2nav">
+                            <h3>Frame 1 Second level nav</h3>
+                        </div>
+                        <div id="frame1data" class="col-md-8">
+                            <div id="frame1map" class="datamap"></div>
+                        </div>
+                    </div>
+                    <div id="frame_2" class="row frame">
+                        <div id="frame2nav" class="col-md-4 level2nav">
+                            <h3>Frame 2 Second level nav</h3>
+                        </div>
+                        <div id="frame2data" class="col-md-8">
+                        </div>                
+                    </div>
+                    <div id="frame_3" class="row frame">
+                        <div id="frame3nav" class="col-md-4 level2nav">
+                            <h3>Frame 3 Second level nav</h3>
+                        </div>
+                        <div id="frame3data" class="col-md-8">
+                        </div>  
+                    </div>
+                    <div id="frame_4" class="row frame">
+                        <div id="frame3nav" class="col-md-4 level2nav">
+                            <h3>Frame 4 Second level nav</h3>
+                        </div>
+                        <div id="frame3data" class="col-md-8">
+                        </div>                          
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="js/data-loader.js"></script>
+        <script src="js/map.js"></script> 
+        <script src="js/main.js"></script> 
+    </body>
+</html>

@@ -1,0 +1,17 @@
+/* starting state of frames */
+
+#frame_2 {
+	display: none;
+}
+
+#frame_3 {
+	display: none;
+}
+
+#frame_4 {
+	display: none;
+}
+
+.datamap {
+	height: 700px;
+}
