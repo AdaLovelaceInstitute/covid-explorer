@@ -14,7 +14,8 @@ function loadCountryData(iso3){
 		'protests':[],
 		'qualitative':[],
 		'ctas':{},
-		'loaded':5
+		'loaded':6,
+		'country':''
 	}
 
 	function initCountryPage(){
@@ -24,7 +25,7 @@ function loadCountryData(iso3){
 			return;
 		}
 
-		console.log(countryData);
+		initPage(countryData);
 	}
 	
 	let secondaryDataload = function(data){
@@ -54,7 +55,7 @@ function loadCountryData(iso3){
 	//vp status
 
 	let vaccineStatusLoad =  function(data){
-		countryData['protests'] = getCountryData(data,iso3)
+		countryData['passport_status'] = getCountryData(data,iso3)
 		initCountryPage()
 	}
 
@@ -65,7 +66,7 @@ function loadCountryData(iso3){
 	//protests
 
 	let protestLoad =  function(data){
-		countryData['passport_status'] = getCountryData(data,iso3)
+		countryData['protests'] = getCountryData(data,iso3)
 		initCountryPage()
 	}
 
@@ -82,9 +83,20 @@ function loadCountryData(iso3){
 
 	let ctasURL = 'https://proxy.hxlstandard.org/data.json?dest=data_view&url=https%3A%2F%2Fdocs.google.com%2Fspreadsheets%2Fd%2F1uiaJOcfw3gwD4F4c3v9n8VKH41JlhxllD5-wxpdY7Oo%2Fedit%23gid%3D244037440'
 
-	loadHXLData(protestURL,protestLoad)
-}
+	loadHXLData(ctasURL,ctaLoad)
 
+	//load qual
+
+	let qualLoad =  function(data){
+		countryData['qualitative'] = getCountryData(data,iso3)
+		initCountryPage()
+	}
+
+	let qualURL = 'https://proxy.hxlstandard.org/data.json?dest=data_view&url=https%3A%2F%2Fdocs.google.com%2Fspreadsheets%2Fd%2F1uiaJOcfw3gwD4F4c3v9n8VKH41JlhxllD5-wxpdY7Oo%2Fedit%23gid%3D495802405'
+
+	loadHXLData(qualURL,qualLoad)
+}
+	
 
 
 function getCountryData(data,iso3){
@@ -138,9 +150,8 @@ function loadFrame1(world){
 function loadFrame2(world){
 	console.log('Loading Frame2')
 	
-	let initFrame2 =  function(data,world){
-		console.log('Init frame 2');
-		console.log(data);
+	let initFrame2 =  function(data){
+		initDataFrame2(data,world);
 	}
 
 	let url = 'https://proxy.hxlstandard.org/data.json?dest=data_view&url=https%3A%2F%2Fdocs.google.com%2Fspreadsheets%2Fd%2F1uiaJOcfw3gwD4F4c3v9n8VKH41JlhxllD5-wxpdY7Oo%2Fedit%23gid%3D1900190177'
@@ -149,12 +160,11 @@ function loadFrame2(world){
 
 }
 
-function loadFrame3(){
+function loadFrame3(world){
 	console.log('Loading Frame3')
 	
 	let initFrame3 =  function(data){
-		console.log('Init frame 3');
-		console.log(data);
+		initDataFrame3(data,world);
 	}
 
 	let url = 'https://proxy.hxlstandard.org/data.json?dest=data_view&url=https%3A%2F%2Fdocs.google.com%2Fspreadsheets%2Fd%2F1uiaJOcfw3gwD4F4c3v9n8VKH41JlhxllD5-wxpdY7Oo%2Fedit%23gid%3D1038755742'
@@ -163,12 +173,11 @@ function loadFrame3(){
 
 }
 
-function loadFrame4(){
+function loadFrame4(world){
 	console.log('Loading Frame3')
 	
 	let initFrame4 =  function(data){
-		console.log('Init frame 4');
-		console.log(data);
+		initDataFrame4(data,world);
 	}
 
 	let url = 'https://proxy.hxlstandard.org/data.json?dest=data_view&url=https%3A%2F%2Fdocs.google.com%2Fspreadsheets%2Fd%2F1uiaJOcfw3gwD4F4c3v9n8VKH41JlhxllD5-wxpdY7Oo%2Fedit%23gid%3D244037440'

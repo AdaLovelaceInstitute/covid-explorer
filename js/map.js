@@ -39,9 +39,8 @@ function createMap(id,worldMap,keyValues,colourBands){
 	}
 
 	function style(feature) {
-		console.log(feature.properties['adm0_a3'],keyValues[0]);
 		return {
-			weight: 2,
+			weight: 1,
 			opacity: 1,
 			color: 'white',
 			dashArray: '3',
@@ -71,10 +70,9 @@ function createMap(id,worldMap,keyValues,colourBands){
 	map.setLayer = function(layerNumber){
 		let data = keyValues[layerNumber];
 		geojson.eachLayer(function(layer){
-			console.log(layer)
 			iso3 = layer.feature.properties['adm0_a3'];
 			layer.setStyle({
-		      fillColor: getColour(iso3,keyValues[layerNumber])
+		      fillColor: getColour(iso3,data)
 		    });
 		});
 	}

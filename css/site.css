@@ -1,17 +1,49 @@
-/* starting state of frames */
-
-#frame_2 {
-	display: none;
+:root {
+  --lightgrey: #D5E0E8;
 }
 
-#frame_3 {
-	display: none;
+@font-face {
+    font-family: Heldane;
+    src: url("../font/TestHeldaneDisplay-Regular.otf") format("opentype");
+    font-weight: 400;
+    font-style:  normal;
 }
 
-#frame_4 {
-	display: none;
+@font-face {
+    font-family: Heldane;
+    src: url("../font/TestHeldaneText-RegularItalic.otf") format("opentype");
+    font-weight: 400;
+    font-style: italic;
 }
+
+h7 {
+	font-family: 'Heldane';
+	font-style: italic;
+	font-weight: 400;
+	font-size: 22px;
+	line-height: 24px;
+	color: #000000;
+}
+
 
 .datamap {
 	height: 700px;
+}
+
+.countrystatusbox {
+	display: inline-block;
+	width: fit-content;
+}
+
+.statusblock {
+	display: inline-block;
+	float:left;
+}
+
+.appicon {
+	width: 90%;
+}
+
+.apptextno {
+	color: var(--lightgrey);
 }

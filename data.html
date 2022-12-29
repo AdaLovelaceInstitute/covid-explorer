@@ -19,51 +19,131 @@
                 <div class="col-md-3 level1nav">
                     <h2>Top level Nav</h2>
                     <div>
-                        <button class="btn topframenav" data-id="frame_1">Frame 1</button>
+                        <button id="framenav1" class="btn topframenav" data-id="frame_1">Frame 1</button>
                     </div>
                     <div>
-                        <button class="btn topframenav" data-id="frame_2">Frame 2</button>
+                        <button id="framenav2" class="btn topframenav" data-id="frame_2">Frame 2</button>
                     </div>
                     <div>
-                        <button class="btn topframenav" data-id="frame_3">Frame 3</button>
+                        <button id="framenav3" class="btn topframenav" data-id="frame_3">Frame 3</button>
                     </div>
                     <div>
-                        <button class="btn topframenav" data-id="frame_4">Frame 4</button>
+                        <button id="framenav4" class="btn topframenav" data-id="frame_4">Frame 4</button>
                     </div>
                 </div>
                 <div class="col-md-9">
                     <div id="frame_1" class="row frame">
-                        <div id="frame1nav" class="col-md-4 level2nav">
+                        <div id="frame1nav" class="col-md-3 level2nav">
                             <h3>Frame 1 Second level nav</h3>
+                            <div><button id="frame1navmap" class="btn">Map</button><button id="frame1navviz" class="btn">Viz</button></div>
+
                         </div>
-                        <div id="frame1data" class="col-md-8">
+                        <div id="frame1data" class="col-md-9">
                             <div id="frame1map" class="datamap"></div>
+                            <div id="frame1viz"></div>
                         </div>
                     </div>
                     <div id="frame_2" class="row frame">
-                        <div id="frame2nav" class="col-md-4 level2nav">
+                        <div id="frame2nav" class="col-md-3 level2nav">
                             <h3>Frame 2 Second level nav</h3>
+                            <div><button id="frame2navmap" class="btn">Map</button><button id="frame2navviz" class="btn">Viz</button></div>
                         </div>
-                        <div id="frame2data" class="col-md-8">
-                        </div>                
+                        <div id="frame2data" class="col-md-9">
+                            <div id=frame2mapcontainer>
+                                <div id="frame2map" class="datamap"></div>
+                                <div class="slidecontainer">
+                                    <input type="range" min="1" max="18" value="18" class="slider" id="dataframe2slider">
+                                </div>
+                            </div>
+                            <div id="frame2viz">
+                                <div>
+                                    <h4>Africa</h4>
+                                    <div id="frame2viz_africa" class="row"></div>
+                                </div>
+                                <div>
+                                    <h4>Asia</h4>
+                                    <div id="frame2viz_asia" class="row"></div>
+                                </div>
+                                <div>
+                                    <h4>Europe</h4>
+                                    <div id="frame2viz_europe" class="row"></div>
+                                </div>
+                                <div>
+                                    <h4>North America</h4>
+                                    <div id="frame2viz_north_america" class="row"></div>
+                                </div>
+                                <div>
+                                    <h4>Oceania</h4>
+                                    <div id="frame2viz_oceania" class="row"></div>
+                                </div>
+                                <div>
+                                    <h4>South America</h4>
+                                    <div id="frame2viz_south_america" class="row"></div>
+                                </div>
+                            </div>                            
+                        </div>
                     </div>
                     <div id="frame_3" class="row frame">
-                        <div id="frame3nav" class="col-md-4 level2nav">
+                        <div id="frame3nav" class="col-md-3 level2nav">
                             <h3>Frame 3 Second level nav</h3>
+                            <div><button id="frame3navmap" class="btn">Map</button><button id="frame3navviz" class="btn">List</button></div>
                         </div>
-                        <div id="frame3data" class="col-md-8">
+                        <div id="frame3data" class="col-md-9">
+                            <div id="frame3mapcontainer">
+                                <div id="frame3map" class="datamap"></div>
+                                <div class="slidecontainer">
+                                    <input type="range" min="1" max="20" value="20" class="slider" id="dataframe3slider">
+                                </div>
+                            </div>
+                            <div id="frame3viz">
+                                <table id="frame3protesttable" class="table">
+                                    <tr>
+                                        <th>Country</th><th>Date</th><th>Protest Notes</th>
+                                    </tr>
+                                </table>
+                            </div>
                         </div>  
                     </div>
                     <div id="frame_4" class="row frame">
-                        <div id="frame3nav" class="col-md-4 level2nav">
+                        <div id="frame4nav" class="col-md-3 level2nav">
                             <h3>Frame 4 Second level nav</h3>
+                            <div><button id="frame4navmap" class="btn">Map</button><button id="frame4navviz" class="btn">Viz</button></div>
                         </div>
-                        <div id="frame3data" class="col-md-8">
+                        <div id="frame4data" class="col-md-9">
+                            <div id="frame4map" class="datamap"></div>
+                            <div id="frame4viz">
+                                <div>
+                                    <h4>Africa</h4>
+                                    <div id="frame4viz_africa" class="row"></div>
+                                </div>
+                                <div>
+                                    <h4>Asia</h4>
+                                    <div id="frame4viz_asia" class="row"></div>
+                                </div>
+                                <div>
+                                    <h4>Europe</h4>
+                                    <div id="frame4viz_europe" class="row"></div>
+                                </div>
+                                <div>
+                                    <h4>North America</h4>
+                                    <div id="frame4viz_north_america" class="row"></div>
+                                </div>
+                                <div>
+                                    <h4>Oceania</h4>
+                                    <div id="frame4viz_oceania" class="row"></div>
+                                </div>
+                                <div>
+                                    <h4>South America</h4>
+                                    <div id="frame4viz_south_america" class="row"></div>
+                                </div>
+                            </div>
                         </div>                          
                     </div>
                 </div>
             </div>
         </div>
+        <script src="js/icon.js"></script> 
+        <script src="js/common.js"></script> 
         <script src="js/data-loader.js"></script>
         <script src="js/map.js"></script> 
         <script src="js/main.js"></script> 
