@@ -1,5 +1,8 @@
 :root {
   --lightgrey: #D5E0E8;
+  --darkgrey: #BAC8D4;
+  --brightyellow: #FFD139;
+  --darkyellow: #D3A522;
 }
 
 @font-face {
@@ -16,34 +19,245 @@
     font-style: italic;
 }
 
-h7 {
+@font-face {
+    font-family: Founders Grotesk Text;
+    src: url("../font/FoundersGrotesk-Regular.otf") format("opentype");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: Founders Grotesk Text;
+    src: url("../font/FoundersGrotesk-Medium.otf") format("opentype");
+    font-weight: 500;
+    font-style: normal;
+}
+
+
+h2 {
 	font-family: 'Heldane';
-	font-style: italic;
+	font-weight: 400;
+	font-size: 30px;
+	line-height: 34px;
+}
+
+h5 {
+	font-family: 'Founders Grotesk Text';
+	font-style: normal;
+	font-weight: 500;
+	font-size: 18px;
+	line-height: 20px;
+}
+
+h6 {
+	font-family: 'Founders Grotesk Text';
+	font-style: normal;
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 18px;
+	color: #000000;
+}
+
+.h7 {
+	font-family: 'Heldane';
 	font-weight: 400;
 	font-size: 22px;
 	line-height: 24px;
 	color: #000000;
+	margin-bottom: 16px;
 }
 
+p {
+	font-family: 'Founders Grotesk Text';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 20px;
+	margin-bottom: 8px;
+}
+
+.p2 {
+	font-family: 'Founders Grotesk Text';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 16px;
+	color: #000000;
+	margin-bottom: 8px;
+}
+
+.p2button {
+	font-family: 'Founders Grotesk Text';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 16px;
+	color: #000000;
+	margin-bottom: 0px;
+}
+
+
+.p3 {
+	font-family: 'Founders Grotesk Text';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 72px;
+	line-height: 72px;
+	color: #000000;
+	margin-bottom: 8px;
+}
+
+
+/* date page specific */
+
+.level1nav {
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+#dataframe {
+	background-color:  var(--lightgrey);
+	padding: 16px;
+}
+
+.nav2frame {
+	padding-left: 0px;
+	padding-right: 0px;
+	border-top: 1px solid #000;
+}
+
+
+#contentdata {
+	background-color:  var(--lightgrey);
+}
+
+.topframenav {
+	background-color: var(--darkgrey);
+	width: 100%;
+	margin-bottom: 8px;
+	text-align: left;
+	padding-top: 16px;
+	padding-bottom: 4px;
+}
+
+.topframenav:hover {
+	background-color: var(--brightyellow);
+}
+
+.activenav {
+	background-color: var(--brightyellow);
+}
+
+.level2nav {
+	padding: 0px;
+}
+
+.level2frame {
+	left-padding: 0px;
+}
 
 .datamap {
 	height: 700px;
 }
 
-.countrystatusbox {
+.nav-group {
+	border-top: 1px solid #000;
+	border-left: 1px solid #000;
+	border-right: 1px solid #000;
+	padding: 16px;
+}
+
+.nav2group {
+	padding: 16px;
+	border-bottom: 1px solid #000;
+}
+
+.frame {
+	padding-left: 12px;
+}
+
+.nav2 {
+	background-color: white;
+	width: 100px;
+	padding-bottom: -10px;
+}
+
+.nav2:hover {
+	background-color: var(--brightyellow)!important;
+}
+
+.nav2:active {
+	background-color: var(--brightyellow)!important;
+}
+
+.nav2:focus {
+	background-color: var(--brightyellow)!important;
+}
+
+
+.active2nav {
+	background-color: var(--brightyellow);
+}
+
+.implementationimg {
+	margin-right: 0px;
+}
+
+.implementationbox {
+	vertical-align: bottom;
 	display: inline-block;
-	width: fit-content;
+}
+
+.implementationtext {
+	display: inline-block;
+	transform:translate(8px,16px);
+}
+
+#frame2viz {
+	background-color: #fff;
+	padding: 16px;
+}
+
+.countrystatusbox {
+	background-color: var(--lightgrey);
+	margin: 8px;
+	padding: 8px;
+}
+
+/* country page specific */
+
+.infobox {
+	margin-top: 16px;
+	border-top: 1px solid #000000;
+	padding-top: 16px;
+	padding-bottom: 32px;
+}
+
+#ctaappicon {
+	margin-bottom: 16px;
+}
+
+.colourkey {
+    width: 32px;
+    height: 5px;
+    display: inline-block;
+    margin-bottom: 2px;
+    margin-left: 32px;
+    margin-right: 8px;
 }
 
 .statusblock {
 	display: inline-block;
 	float:left;
-}
-
-.appicon {
-	width: 90%;
+	padding-right: 8px;
+	padding-bottom: 8px;
 }
 
 .apptextno {
-	color: var(--lightgrey);
+	color: var(--darkgrey);
+}
+
+.countrystatusbox {
+	display: inline-block;
+	width: fit-content;
 }

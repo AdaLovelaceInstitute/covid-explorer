@@ -88,6 +88,7 @@ function loadCountryData(iso3){
 	//load qual
 
 	let qualLoad =  function(data){
+		console.log(data)
 		countryData['qualitative'] = getCountryData(data,iso3)
 		initCountryPage()
 	}

@@ -33,12 +33,12 @@ function initPage(data){
 	createContextGraph(data)
 	processStatusChart(data)
 	createAppIcon(data)
+	populateQualData(data['qualitative'])
+	populateDigitalSkills(data)
 }
 
 function createAppIcon(data){
 	$('#ctaappicon').append(appIcon)
-	$('#ctaappicon svg').width('100%')
-	$('#ctaappicon svg').height('300px')
 	setIcon('#ctaappicon',data['ctas'][0])
 	createAppText(data['ctas'][0])
 }
@@ -46,28 +46,60 @@ function createAppIcon(data){
 function createAppText(data){
 
 	if(data['QR code']=='No' || data['QR code']=='N/A'){
-		$('#text_qr').addClass('apptextno');
+		$('#text_qr').addClass('apptextno')
+		$('#icon_qr_yes').hide()
+	} else {
+		$('#icon_qr_no').hide()
 	}
 
 	if(data['Vaccine information']=='No' || data['Vaccine information']=='N/A'){
-		$('#text_vaccine').addClass('apptextno');
+		$('#text_vaccine').addClass('apptextno')
+		$('#icon_vaccine_yes').hide()
+	} else {
+		$('#icon_vaccine_no').hide()
 	}
+
 	if(data['Bluetooth']=='No' || data['Bluetooth']=='N/A'){
-		$('#text_bluetooth').addClass('apptextno');
+		$('#text_bluetooth').addClass('apptextno')
+		$('#icon_bluetooth_yes').hide()
+	} else {
+		$('#icon_bluetooth_no').hide()
 	}
+
 	if(data['Location Data']=='No' || data['Location Data']=='N/A'){
-		$('#text_location').addClass('apptextno');
+		$('#text_location').addClass('apptextno')
+		$('#icon_location_yes').hide()
+	} else {
+		$('#icon_location_no').hide()
 	}
+
 	if(data['GAEN API'] =='No' || data['GAEN API']){
-		$('#text_gaen').addClass('apptextno');
+		$('#text_gaen').addClass('apptextno')
+		$('#icon_gaen_yes').hide()
+	} else {
+		$('#icon_gaen_no').hide()
 	}
+
 	if(data['Decentralised']=='No' || data['Decentralised']=='N/A'){
-		$('#text_decentralised').addClass('apptextno');
+		$('#text_decentralised').addClass('apptextno')
+		$('#icon_decentralised_yes').hide()
+	} else {
+		$('#icon_decentralised_no').hide()
 	}
 }
 
-function populateQualData(){
-	
+function populateQualData(data){
+	console.log(data);
+	data.forEach(function(d){
+		console.log(d);
+		let html = `<tr><td><p>${d['Type']}</p></td><td><p>${d['Text']}</p></td><td><p><a href="${d['Link']}" target="_blank">Read More</a></p></td></tr>`
+		$('#qualtable').append(html)
+	});
+}
+
+function populateDigitalSkills(data){
+	$('#digitalscore').html(data['ctas'][0]['digital skills']);
+	$('#digitalrank').html(data['ctas'][0]['digital skills rank']);
 }
 
 function createContextGraph(data){
@@ -75,14 +107,14 @@ function createContextGraph(data){
 	
 	let keys = ['deaths','cases','vaccinated','fully_vaccinated']
 
-	$('#introdate').html(data.vaccine_passport[0]['VP Date of introduction']);
+	$('#introdate').html(data.vaccine_passport[0]['VP Date of introduction'])
 
 	keys.forEach(function(key,i){
 		data[key].forEach(function(d){
 			if(d.v!='' && d.d>'2020-12-31' && d.d<'2022-01-01'){
-				let date = d3.timeParse("%Y-%m-%d")(d.d);
-				let value = parseFloat(d.v);
-				output[i].data.push({'x':date,'y':value});
+				let date = d3.timeParse("%Y-%m-%d")(d.d)
+				let value = parseFloat(d.v)
+				output[i].data.push({'x':date,'y':value})
 			}
 		});
 	});
@@ -134,7 +166,7 @@ function createImplmentationGraph(data,implementation){
       .datum(data[0].data)
       .attr("fill", "none")
       .attr("stroke", data[0].colour)
-      .attr("stroke-width", 1.5)
+      .attr("stroke-width", 3)
       .attr("d", d3.line()
         .x(function(d) { return x(d.x) })
         .y(function(d) { return y(d.y) })
@@ -144,29 +176,29 @@ function createImplmentationGraph(data,implementation){
       .datum(data[1].data)
       .attr("fill", "none")
       .attr("stroke", data[1].colour)
-      .attr("stroke-width", 1.5)
+      .attr("stroke-width", 3)
       .attr("d", d3.line()
         .x(function(d) { return x(d.x) })
         .y(function(d) { return y(d.y) })
         )
-    .attr('opacity',0.75)
+    .attr('opacity',0.50)
 
    	svg.append("path")
       .datum(data[2].data)
       .attr("fill", "none")
       .attr("stroke", data[2].colour)
-      .attr("stroke-width", 1.5)
+      .attr("stroke-width", 3)
       .attr("d", d3.line()
         .x(function(d) { return x(d.x) })
         .y(function(d) { return y2(d.y) })
         )
-    .attr('opacity',0.75)
+    .attr('opacity',0.50)
 
    	svg.append("path")
       .datum(data[3].data)
       .attr("fill", "none")
       .attr("stroke", data[3].colour)
-      .attr("stroke-width", 1.5)
+      .attr("stroke-width", 3)
       .attr("d", d3.line()
         .x(function(d) { return x(d.x) })
         .y(function(d) { return y2(d.y) })
@@ -240,7 +272,7 @@ function createStatusChart(data,status){
       .datum(data)
       .attr("fill", "none")
       .attr("stroke",'#1494E7')
-      .attr("stroke-width", 1.5)
+      .attr("stroke-width", 3)
       .attr("d", d3.line()
         .x(function(d) { return x(d.x) })
         .y(function(d) { return y(d.y) })
@@ -280,11 +312,10 @@ function createStatusChart(data,status){
 
 function createStatusText(status){
 	status.forEach(function(s,i){
-
 		let text = statusText[s['Status']-1]
 		let html = `<li>
 			<p>${s['Date of status change']}</p>
-			<div class="statusblock"><img src="images/${s['Status']}.png" width="50"/></div><p>${text}</p>
+			<div class="statusblock"><img src="images/implementation_type_${s['Status']}.svg" width="30"/></div><div class="statustext"><p>${text}</p></div>
 		</li>`
 		$('#statuschanges').append(html);
 	});

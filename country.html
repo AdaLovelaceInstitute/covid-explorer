@@ -19,47 +19,64 @@
             </div>
             <div class="row">
                 <div id="implementation" class="col-md-4">
-                    <h7>Context of Emergence of Vaccine Passports</h7>
-                    <p class="p2">Data source</p>
-                    <p class="p2">Date of Introduction: <span id="introdate"></span></p>
-                    <div id="contextgraph"></div>
-                </div>
-                <div class="col-md-4">
-                    <h7>Changes in Vaccine Passport Policies</h7>
-                    <p class="p2">Data source</p>
-                    <div id="statusgraph"></div>
-                    <div >
-                        <ol id="statuschanges"></ol>
+                    <div class="infobox">
+                        <p class="h7">Context of Emergence of Vaccine Passports</p>
+                        <p class="p2">Data source</p>
+                        <p class="p2">Date of Introduction: <span id="introdate"></span></p>
+                        <div id="contextgraph"></div>
+                        <div>
+                            <p><i class="colourkey" style="background-color:#fF0000"></i>7 day average of new cases</p>
+                            <p><i class="colourkey" style="background-color:#fF0000"></i>Percentage of people vaccinated</p>
+                            <p><i class="colourkey" style="background-color:#fF0000"></i>Percentage fully vaccinated</p>
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <h7>Implementation Types of CTAs</h7>
-                    <p class="p2">Data source</p>
-                    <div id="ctaappicon"></div>
-                    <div id="ctaapptext">
-                        <p id="text_decentralised">Decentralised</p>
-                        <p id="text_vaccine">Stores Vaccine Information</p>
-                        <p id="text_qr">QR Codes</p>
-                        <p id="text_bluetooth">Bluetooth Standard</p>
-                        <p id="text_location">Location Data</p>
-                        <p id="text_gaen">Gaen API</p>
+                        <div class="infobox">
+                        <p class="h7">Changes in Vaccine Passport Policies</p>
+                        <p class="p2">Data source</p>
+                        <p class="p2">.</p>
+                        <div id="statusgraph"></div>
+                        <div >
+                            <ol id="statuschanges"></ol>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="infobox">
+                        <p class="h7">Implementation Types of CTAs</p>
+                        <p class="p2">Data source</p>
+                        <div id="ctaappicon"></div>
+                        <div id="ctaapptext">
+                            <p id="text_decentralised"><img id="icon_decentralised_yes" src="images/Yes.svg" /><img id="icon_decentralised_no" src="images/No.svg" /> Decentralised</p>
+                            <p id="text_vaccine"><img id="icon_vaccine_yes" src="images/Yes.svg" /><img id="icon_vaccine_no" src="images/No.svg" /> Stores Vaccine Information</p>
+                            <p id="text_qr"><img  id="icon_qr_yes" src="images/Yes.svg" /><img id="icon_qr_no" src="images/No.svg" /> QR Codes</p>
+                            <p id="text_bluetooth"><img  id="icon_bluetooth_yes" src="images/Yes.svg" /><img id="icon_bluetooth_no" src="images/No.svg" /> Bluetooth Standard</p>
+                            <p id="text_location"><img  id="icon_location_yes" src="images/Yes.svg" /><img id="icon_location_no" src="images/No.svg" /> Location Data</p>
+                            <p id="text_gaen"><img  id="icon_gaen_yes" src="images/Yes.svg" /><img id="icon_gaen_no" src="images/No.svg" /> Gaen API</p>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-12">
-                    <h7>Government and Social Impact</h7>
+                <div class="col-12 infobox">
+                    <p class="h7">Government and Social Impact</p>
                     <table id="qualtable" class="table">
                         <tr><th>Type</th><th>Text</th><th>Link</th></tr>
                     </table>
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-4">
-                    <h7>Vaccine Supply</h7>
+                <div class="col-md-4 infobox">
+                    <p class="h7">Vaccine Supply</p>
                 </div>
-                <div class="col-md-4">
-                    <h7>Digital Skill score</h7>
+                <div class="col-md-4 infobox">
+                    <p class="h7">Digital Skill Score</h7>
+                    <p class="p2">Data source</p>
+                    <p id="digitalscore" class="p3"></p>
+                    <p class="h7">Digital Skill Rank</p>
+                    <p class="p2">Data source</p>
+                    <p id="digitalrank" class="p3"></p>
                 </div>
             </div>
         </div>

@@ -7,9 +7,11 @@ function init(){
 }
 
 function switchFrame(frame,map){
-		$('.frame').hide();
-		$('#frame_'+frame).show();
-		map.invalidateSize();
+		$('.frame').hide()
+		$('#frame_'+frame).show()
+		map.invalidateSize()
+		$('.topframenav').removeClass('activenav')
+		$('#framenav'+frame).addClass('activenav')
 }
 
 function initDataFrame1(data,world){
@@ -26,19 +28,33 @@ function initDataFrame1(data,world){
 		switchFrame(1,map);
 	});
 
+	$('#frame1viz').hide();
+
 	$('#frame1navmap').on('click',function(){
-		$('#frame1viz').hide();
-		$('#frame1mapcontainer').show();
+		$('#frame1viz').hide()
+		$('#frame1map').show()
+		$('#frame1navmap').addClass('active2nav')
+		$('#frame1navviz').removeClass('active2nav')
 		map.invalidateSize();
 	});
 
 	$('#frame1navviz').on('click',function(){
 		$('#frame1map').hide();
 		$('#frame1viz').show();
+		$('#frame1navmap').removeClass('active2nav')
+		$('#frame1navviz').addClass('active2nav')
 	});
+
+	updateKeyStatsFrame1(data)
 
 	populateViz1(data)
 }
+
+function updateKeyStatsFrame1(data){
+
+}
+
+
 
 function populateViz1(data){
 	data.forEach(function(d){
@@ -159,18 +175,61 @@ function initDataFrame2(data,world){
 		map.setLayer(layer-1);
 	})
 
+	$('#frame2viz').hide();
+
 	$('#frame2navmap').on('click',function(){
 		$('#frame2viz').hide();
 		$('#frame2mapcontainer').show();
+		$('#frame2legend1').show();
+		$('#frame2legend2').hide();
+		$('#frame2navmap').addClass('active2nav')
+		$('#frame2navviz').removeClass('active2nav')
 		map.invalidateSize();
 	});
 
 	$('#frame2navviz').on('click',function(){
 		$('#frame2mapcontainer').hide();
 		$('#frame2viz').show();
+		$('#frame2legend1').hide();
+		$('#frame2legend2').show();
+		$('#frame2navmap').removeClass('active2nav')
+		$('#frame2navviz').addClass('active2nav')
 	});
 
 	populateDataFrame2Viz(data)
+	updateKeyStatsFrame2(data)
+}
+
+function updateKeyStatsFrame2(data){
+	
+	let counts = [0,0,0,0]
+	keys = [];
+	data.forEach(function(d){
+		let key = d['Country ISO3']
+		if(keys.indexOf(key)==-1){
+			keys.push(key)
+		}
+	})
+	
+	keys.forEach(function(key){
+		let countrySet = data.filter(function(d){
+			if(d['Country ISO3']==key){
+				return true
+			} else {
+				return false
+			}
+		})
+		console.log(countrySet)
+		let policyCount = countrySet.length
+		counts[policyCount-1]++
+	})
+	console.log(keys)
+	$('#frame2allcountries').html(keys.length)
+	$('#frame21countries').html(counts[0])
+	$('#frame22countries').html(counts[1])
+	$('#frame23countries').html(counts[2])
+	$('#frame24countries').html(counts[3])
+
 }
 
 function populateDataFrame2Viz(data){
@@ -186,7 +245,7 @@ function populateDataFrame2Viz(data){
 	countryData.forEach(function(d){
 		let countryCode = d['code'].toLowerCase()
 		let html = `<div id="country_${countryCode}" class="countrystatusbox"> 
-			<p>${d['code']}</p>
+			<p class="p2">${d['code']}</p>
 		</div>`
 		let continent = d['continent'].toLowerCase().replace(' ','_')
 
@@ -196,7 +255,7 @@ function populateDataFrame2Viz(data){
 	data.forEach(function(d){
 		let countryCode = d['Country ISO3'].toLowerCase()
 		let id=`#country_${countryCode}`
-		$(id).append('<img src="images/'+d['Status']+'.png" width="50">')
+		$(id).append('<div class="implementationbox"><span class="p2 implementationtext">'+d['Status']+'</span><img class="implementationimg" src="images/implementation_type_'+d['Status']+'.svg" width="30" ></div>')
 	});
 }
 
