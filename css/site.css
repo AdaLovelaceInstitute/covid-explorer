@@ -41,6 +41,15 @@ h2 {
 	line-height: 34px;
 }
 
+h4 {
+	font-family: 'Founders Grotesk Text';
+	font-style: normal;
+	font-weight: 500;
+	font-size: 22px;
+	line-height: 24px;
+	text-align: center;
+}
+
 h5 {
 	font-family: 'Founders Grotesk Text';
 	font-style: normal;
@@ -76,6 +85,18 @@ p {
 	margin-bottom: 8px;
 }
 
+.sliderp {
+	font-family: 'Founders Grotesk Text';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 20px;
+	margin-bottom: 8px;
+	vertical-align:middle;
+	margin-left: 16px; 
+
+}
+
 .p2 {
 	font-family: 'Founders Grotesk Text';
 	font-style: normal;
@@ -107,23 +128,42 @@ p {
 	margin-bottom: 8px;
 }
 
+.p4 {
+	font-family: 'Founders Grotesk Text';
+	font-style: normal;
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 16px;
+	color: #000000;
+	margin-bottom: 0px;
+}
+}
+
 
 /* date page specific */
+
 
 .level1nav {
 	padding-left: 0px;
 	padding-right: 0px;
+	overflow: scroll;
+	border-bottom: 1px solid #000;
+}
+
+.level2nav {
+	overflow: scroll;
 }
 
 #dataframe {
 	background-color:  var(--lightgrey);
-	padding: 16px;
+	padding: 16px;	
 }
 
 .nav2frame {
 	padding-left: 0px;
 	padding-right: 0px;
 	border-top: 1px solid #000;
+	border-bottom: 1px solid #000;
 }
 
 
@@ -144,16 +184,22 @@ p {
 	background-color: var(--brightyellow);
 }
 
+.frame {
+
+}
+
 .activenav {
 	background-color: var(--brightyellow);
 }
 
-.level2nav {
-	padding: 0px;
+.level1nav {
+	border-left: 1px solid #000;
+	border-right: 1px solid #000;
 }
 
 .level2frame {
-	left-padding: 0px;
+	border-left: 1px solid #000;
+	border-right: 1px solid #000;
 }
 
 .datamap {
@@ -162,8 +208,7 @@ p {
 
 .nav-group {
 	border-top: 1px solid #000;
-	border-left: 1px solid #000;
-	border-right: 1px solid #000;
+
 	padding: 16px;
 }
 
@@ -172,8 +217,8 @@ p {
 	border-bottom: 1px solid #000;
 }
 
-.frame {
-	padding-left: 12px;
+.nav2groupplain {
+	padding: 16px;
 }
 
 .nav2 {
@@ -208,9 +253,20 @@ p {
 	display: inline-block;
 }
 
+.implementationbox2 {
+	vertical-align: top;
+	display: inline-block;
+}
+
 .implementationtext {
 	display: inline-block;
 	transform:translate(8px,16px);
+}
+
+.implementationdef {
+	padding-left: 8px;
+	display: inline-block;
+	width:  calc(100% - 45px);
 }
 
 #frame2viz {
@@ -222,6 +278,62 @@ p {
 	background-color: var(--lightgrey);
 	margin: 8px;
 	padding: 8px;
+}
+
+.appiconviz{
+	margin-bottom: 8px;
+}
+
+.leaflet-container {
+    background: #FFF!important;
+}
+
+#frame3viz {
+	background-color: #fff;
+	overflow: scroll;
+}
+
+#frame2viz {
+	background-color: #fff;
+	overflow: scroll;
+}
+
+#frame4viz {
+	background-color: #fff;
+	overflow: scroll;
+}
+
+#frame1viz {
+	background-color: #fff;
+	overflow: scroll;
+}
+
+.slidecontainer {
+	transform:translate(8px,-24px);
+}
+
+.frame4continent {
+	padding: 16px;
+}
+
+.appiconviz svg {
+	width: 80%;
+	padding-bottom: 16px;
+}
+
+input[type=range] {
+  accent-color: #888888;
+
+}
+
+#mapoverlay {
+	min-width: 100px;
+	min-height: 50px;
+	background-color: #fff;
+	position: absolute;
+	z-index: 1000;
+	padding: 16px;
+	max-width: 350px;
 }
 
 /* country page specific */
@@ -244,6 +356,18 @@ p {
     margin-bottom: 2px;
     margin-left: 32px;
     margin-right: 8px;
+    border-radius: 4px;
+}
+
+.colourkeyblock {
+    width: 32px;
+    height: 10px;
+    display: inline-block;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    margin-right: 8px;
+    border-radius: 4px;
+    border:  1px solid #000;
 }
 
 .statusblock {
@@ -261,3 +385,83 @@ p {
 	display: inline-block;
 	width: fit-content;
 }
+
+#ctaappicon svg {
+	height: 300px;
+	margin-bottom: 16px;
+}
+
+/* front page */
+
+#landingtext {
+	text-align:  center;
+    vertical-align:middle;
+    padding-top: 100px;
+    height: 400px;
+   }
+
+.fillimg{
+    background: url('../images/front_page.png') no-repeat;
+    background-size: cover;
+    min-height: 400px;
+}
+
+.firstrow {
+	background-color: var(--darkgrey);
+}
+
+.frontpagebutton {
+	padding-top: 12px;
+	border-radius: 20px;
+	font-family: 'Founders Grotesk Text';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 22px;
+	line-height: 24px;
+
+}
+
+.frontpagebutton a {
+	color: #fff;
+	text-decoration: none;
+}
+
+.frontpagesectionbutton {
+	position: absolute;
+	bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 0%);
+}
+
+.maxwidthcontent {
+	max-width: 1170px;
+	margin: auto;
+}
+
+.frontpagesectiontitle {
+	font-family: 'Heldane';
+	font-weight: 400;
+	font-size: 22px;
+	line-height: 24px;
+	text-align: center;
+	margin-bottom: 32px;
+
+}
+
+.frontsection {
+	padding-top: 32px;
+	text-align:  center;
+	position: relative;
+	padding-bottom: 64px;
+}
+
+.frontsectionimage {
+	margin-bottom: 32px;
+}
+
+.thirdsection {
+	margin-top: 32px;
+	padding-top: 32px;
+	margin-bottom: 64px;
+}
+

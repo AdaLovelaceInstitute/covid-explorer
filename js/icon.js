@@ -1,8 +1,6 @@
 var appIcon = `
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
-   width="295.90222"
-   height="327.8613"
    viewBox="0 0 295.90222 327.8613"
    fill="none"
    version="1.1"

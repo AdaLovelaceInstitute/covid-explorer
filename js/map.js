@@ -1,16 +1,16 @@
-function initMap(id,world,keyValues,colourBands){
-	let map = createMap(id,world,keyValues,colourBands)
+function initMap(id,world,keyValues,colourBands,mouseover){
+	let map = createMap(id,world,keyValues,colourBands,mouseover)
 	return map
 }
 
-function createMap(id,worldMap,keyValues,colourBands){
+function createMap(id,worldMap,keyValues,colourBands,mouseover){
 	console.log(worldMap);
-	const map = L.map(id).setView([0, 0], 2);
+	const map = L.map(id,{zoomSnap: 0.5}).setView([20, 0], 1.5);
 
-	const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+	/*const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 		maxZoom: 19,
 		attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-	}).addTo(map);
+	}).addTo(map);*/
 
 	function getColour(iso3,keyValues) {
 		let value = getValue(iso3,keyValues)
@@ -43,29 +43,32 @@ function createMap(id,worldMap,keyValues,colourBands){
 			weight: 1,
 			opacity: 1,
 			color: 'white',
-			dashArray: '3',
 			fillOpacity: 0.7,
 			fillColor: getColour(feature.properties['adm0_a3'],keyValues[0])
 		};
 	}
 
 	const geojson = L.geoJson(worldMap, {
-		style
-		//onEachFeature
+		style,
+		onEachFeature
 	}).addTo(map);
 
-	/*function resetHighlight(e) {
-		geojson.resetStyle(e.target);
-		info.update();
-	}
 
 	function onEachFeature(feature, layer) {
 		layer.on({
-			mouseover: highlightFeature,
-			mouseout: resetHighlight,
-			click: zoomToFeature
-		});
-	}*/
+			mouseover: function(feature){
+				let mouseX = feature.originalEvent.pageX
+				let mouseY = feature.originalEvent.pageY
+				$('#mapoverlay').css('top', mouseY);
+    			$('#mapoverlay').css('left', mouseX);
+    			console.log(feature)
+				mouseover(feature.target.feature.properties.adm0_a3)
+			},
+			mouseout: function(){
+				//$('#mapoverlay').hide()
+			}
+		})
+	}
 
 	map.setLayer = function(layerNumber){
 		let data = keyValues[layerNumber];
