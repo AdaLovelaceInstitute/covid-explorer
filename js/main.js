@@ -681,7 +681,7 @@ function populateFrame4Viz(data){
 function initDataLoading(data,map){
 	$.ajax({ 
 	    type: 'GET', 
-	    url: '../data/world_slim.json',
+	    url: 'data/world_slim.json',
 	    dataType: 'json',
 	    success:function(response){
 			loadData('frame1',response);
