@@ -1,19 +1,23 @@
+<!DOCTYPE HTML>
 <html>
     <head>
         <title>COVID Monitor</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
         <script
           src="https://code.jquery.com/jquery-3.6.1.min.js"
           integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
           crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="css/site.css"/>
         <script src="https://d3js.org/d3.v7.min.js"></script>
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
         <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>      
     </head>
     <body>
+        <div class="loader"></div>
         <div id="dataframe">
             <div id="contentdata" class="container-fluid">
                 <div class="row gx-0">
@@ -40,10 +44,17 @@
                         </div>
                         <div class="nav-group">
                             <h5>Country Pages</h5>
+                            <div class="dropdown">
+                              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                View By Country
+                              </button>
+                              <div id="countrydropdownitems" class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton"> 
+                              </div>
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-9 nav2frame">
-                        <div id="frame_1" class="row frame gx-0"">
+                        <div id="frame_1" class="row frame gx-0">
                             <div id="frame1nav" class="col-md-3 level2nav">
                                 <div class="nav2group">
                                     <h2>Emergence of Vaccine Passports</h2>
@@ -94,12 +105,16 @@
                                 <div id="frame2legend1" class="nav2groupplain">
                                     <h5>Countries in Dataset</h5>
                                     <p class="p3"><span id="frame2allcountries"></span></p>
+                                    <i class="colourkeyblocklarge" style="background-color:#c43b3d;"></i>
                                     <h5>Countries that made 4–5 changes to policy</h5>
                                     <p class="p3"><span id="frame24countries"></span></p>
+                                    <i class="colourkeyblocklarge" style="background-color:#d3a522;"></i>
                                     <h5>Countries that made 3 changes to policy</h5>
                                     <p class="p3"><span id="frame23countries"></span></p>
+                                    <i class="colourkeyblocklarge" style="background-color:#ffd139;"></i>
                                     <h5>Countries that made 2 changes to policy</h5>
                                     <p class="p3"><span id="frame22countries"></span></p>
+                                    <i class="colourkeyblocklarge" style="background-color:#ffe89c;"></i>
                                     <h5>Countries that made 1 changes to policy</h5>
                                     <p class="p3"><span id="frame21countries"></span></p>
                                 </div>
@@ -122,7 +137,7 @@
                                 </div>
                             </div>
                             <div id="frame2data" class="col-md-9 level2frame">
-                                <div id=frame2mapcontainer>
+                                <div id="frame2mapcontainer" class="mapcontainer">
                                     <div id="frame2map" class="datamap"></div>
                                     <div class="slidecontainer">
                                         <input type="range" min="1" max="18" value="18" class="slider" id="dataframe2slider"><span id="frame2slidervalue" class="sliderp"></span>
@@ -169,20 +184,30 @@
                                 <div class="nav2groupplain">
                                     <h5>Countries in Dataset</h5>
                                     <p class="p3"><span id="frame3allcountries"></span></p>
-                                    <h5>Countries that made 4–5 changes to policy</h5>
+                                    <h5>Countries which experience protests</h5>
                                     <p class="p3"><span id="frame3protests"></span></p>
+                                </div>
+                                <div class="nav2groupplain">
+                                    <h5>Legend</h5>
+                                    <p><i class="colourkeyblock" style="background-color:#c43b3d;"></i>Country with Protest</p>
+                                    <p><i class="colourkeyblock" style="background-color:#ffe89c;"></i>Country without Protest</p>
+                                </div>
+                                <div class="nav2groupplain">
                                     <p>1. Nearly 50% of the countries in our sample had protests against vaccine passports and mobility restrictions.</p>
                                     <p>2. Protests reveal the importance of building public legitimay with strong governance mechanisms and transparent and effective communication strategies.</p>
                                     <p>3. In most cases, anti-vaccine passport protests started amid mandatory domestic vaccine passport schemes.</p>
                                     <p>4. This demonstrates the public resistance against using data-driven technology to control mobility and restrict freedoms.</p>
                                 </div>
+                                <div class="nav2groupplain">
+                                    <p>Not every news article makes an explicit link to vaccine passports, but mandatory vaccine policies have been facililated by digital vaccine passports which allowed authorities to control individual's freedoms and access based on their health status. Governments introduced mandatory vaccine policies after they had rolled out vaccine passports. It was hoped that mandatory vaccine passports would incentivise people to get vaccinated, but as can be seen, different sub-groups in society protested this approach and resisted mandatory vaccien passport policies.</p>
+                                </div>
                             </div>
 
                             <div id="frame3data" class="col-md-9 level2frame">
-                                <div id="frame3mapcontainer">
+                                <div id="frame3mapcontainer" class="mapcontainer">
                                     <div id="frame3map" class="datamap"></div>
                                     <div class="slidecontainer">
-                                        <input type="range" min="1" max="20" value="20" class="slider" id="dataframe3slider">
+                                        <input type="range" min="1" max="20" value="20" class="slider" id="dataframe3slider"><span id="frame3slidervalue" class="sliderp"></span>
                                     </div>
                                 </div>
                                 <div id="frame3viz">
@@ -204,9 +229,29 @@
                                     </div>
                                 </div>
                                 <div id="frame4legend1" class="nav2groupplain">
-                                    <div id="frame4layers"></div>
+                                    <div>
+                                        <h5>Legend</h5>
+                                        <p><i class="colourkeyblock" style="background-color:#c43b3d;"></i>Country with Technology</p>
+                                        <p><i class="colourkeyblock" style="background-color:#ffe89c;"></i>Country without Technology</p>
+                                    </div>
+
+                                    <div id="frame4layers">
+                                        <h5>Technologies</h5>
+                                    </div>
+                                    
                                 </div>
                                 <div id="frame4legend2" class="nav2groupplain">
+                                    <div>
+                                        <h5>Legend</h5>
+                                        <img id="legendcta" src="images/cta_Legend.svg" alt="Legend for app icons" width="120px">
+                                        <p>1 GAEN API</p>
+                                        <p><i class="legendblock" style="background-color:#FFD139;"></i> Centralised</p>
+                                        <p>3 Decentralised</p>
+                                        <p>4 Stores vaccine info</p>
+                                        <p>5 QR code</p>
+                                        <p>6 Location data</p>
+                                        <p>7 Blutooth standard</p>
+                                    </div>
                                     <div>
                                         <h5>Centralised</h5>
                                         <p class="p3"><span id="frame4centralised"></span></p>
@@ -225,41 +270,35 @@
                                     </div>
                                 </div>
                                 <div class="nav2groupplain">
-                                    <p>1 GAEN API</p>
-                                    <p>2 Centralized</p>
-                                    <p>3 Decentralized</p>
-                                    <p>4 Stores vaccine info</p>
-                                    <p>5 QR code</p>
-                                    <p>6 Location data</p>
-                                    <p>7 Blutooth standard</p>
+                                    <p>We could not get detailed information on some countries' contact tracing apps. We would welcome contributions from researchers, policymakers and the members of the public to complete our dataset.</p>
                                 </div>
                             </div>
                             <div id="frame4data" class="col-md-9 level2frame">
                                 <div id="frame4map" class="datamap"></div>
                                 <div id="frame4viz">
                                     <div class="frame4continent">
-                                        <h4>Africa</h4>
-                                        <div id="frame4viz_africa" class="row"></div>
+                                        <h5>Africa</h5>
+                                        <div id="frame4viz_africa"></div>
                                     </div>
                                     <div class="frame4continent">
-                                        <h4>Asia</h4>
-                                        <div id="frame4viz_asia" class="row"></div>
+                                        <h5>Asia</h5>
+                                        <div id="frame4viz_asia"></div>
                                     </div>
                                     <div class="frame4continent">
-                                        <h4>Europe</h4>
-                                        <div id="frame4viz_europe" class="row"></div>
+                                        <h5>Europe</h5>
+                                        <div id="frame4viz_europe"></div>
                                     </div>
                                     <div class="frame4continent">
-                                        <h4>North America</h4>
-                                        <div id="frame4viz_north_america" class="row"></div>
+                                        <h5>North America</h5>
+                                        <div id="frame4viz_north_america"></div>
                                     </div>
                                     <div class="frame4continent">
-                                        <h4>Oceania</h4>
-                                        <div id="frame4viz_oceania" class="row"></div>
+                                        <h5>Oceania</h5>
+                                        <div id="frame4viz_oceania"></div>
                                     </div>
                                     <div class="frame4continent">
-                                        <h4>South America</h4>
-                                        <div id="frame4viz_south_america" class="row"></div>
+                                        <h5>South America</h5>
+                                        <div id="frame4viz_south_america"></div>
                                     </div>
                                 </div>
                             </div>                          
@@ -272,6 +311,7 @@
             <p>tempt overlay content
         </div>
         <script src="js/icon.js"></script> 
+        <script src="js/chart1.js"></script> 
         <script src="js/common.js"></script> 
         <script src="js/data-loader.js"></script>
         <script src="js/map.js"></script> 

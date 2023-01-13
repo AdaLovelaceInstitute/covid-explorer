@@ -44,6 +44,7 @@ function loadCountryData(iso3){
 	//vps
 
 	let vaccinepassportLoad =  function(data){
+		populateCountryMenu(data)
 		countryData['vaccine_passport'] = getCountryData(data,iso3)
 		initCountryPage()
 	}

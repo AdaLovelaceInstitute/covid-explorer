@@ -1,14 +1,23 @@
 function init(){
+	$('#dataframe').hide();
 	$('#mapoverlay').hide()
+
+	$('.level2nav').on('mouseover',function(e){
+		$('#mapoverlay').hide()
+	})
+
+
+
 	$('#frame_2').hide()
 	$('#frame_3').hide()
 	$('#frame_4').hide()
-	let height = window.innerHeight-32
+	let height = $(window).height()-32
 	console.log(height)
-	$('.level1nav').height(height)
+	$('.level1nav').css({'maxHeight':(height+2)+'px'});
 	$('.level2nav').css({'maxHeight':height+'px'});
 	$('#frame3viz').css({'maxHeight':height+'px'});
 	$('#frame2mapcontainer').css({'maxHeight':height+'px'});
+	$('#frame3mapcontainer').css({'maxHeight':height+'px'});
 	$('#frame2viz').css({'maxHeight':height+'px'});
 	$('#frame4viz').css({'maxHeight':height+'px'});
 	$('#frame1viz').css({'maxHeight':height+'px'});
@@ -26,7 +35,8 @@ function switchFrame(frame,map){
 }
 
 function initDataFrame1(data,world){
-
+	$('#dataframe').show();
+	$('.loader').hide();
 	let keyValues = data.map(function(d){
 		return {'key':d['Country ISO3'],'value':d['Quarter'],'date':d['VP Date of introduction']}
 	});
@@ -87,8 +97,25 @@ function initDataFrame1(data,world){
 	});
 
 	updateKeyStatsFrame1(data)
+	
 
-	populateViz1(data)
+	//populateViz1(data)
+
+	$('#frame1viz').html(chart1)
+
+	viz1overlay(data)
+
+	let dropdownOptions = []
+	let isoCodes2 = []
+	data.forEach(function(d){
+		if(isoCodes2.indexOf(d['Country ISO3'])==-1){
+			isoCodes2.push(d['Country ISO3'])
+			dropdownOptions.push({'iso':d['Country ISO3'],'country':d['Country']})
+		}
+		
+	});
+
+	populateCountryDrop(dropdownOptions)
 }
 
 function updateKeyStatsFrame1(data){
@@ -112,7 +139,53 @@ function updateKeyStatsFrame1(data){
 	$('#frame1launched').html(keys.length-countNotlaunched)
 }
 
+function viz1overlay(data){
+	console.log('overlay init')
+	$('.countrypoint').on('mouseover',function(){
+		console.log('overlay')
+		let iso = $(this).attr('id')
 
+		let row = {}
+		data.forEach(function(d){
+			if(d['Country ISO3']==iso){
+				row = d
+			}
+		});
+		let mouseX = event.pageX
+    	let mouseY = event.pageY
+    	if(mouseX>window.innerWidth-200){
+    		mouseX = window.innerWidth-200
+    	}
+    	if(mouseY>window.innerHeight-200){
+    		mouseY = window.innerHeight-200
+    	}
+
+		$('#mapoverlay').css('top', mouseY);
+		$('#mapoverlay').css('left', mouseX);
+
+		$('#mapoverlay').show()
+
+		let deaths = Math.round(row['Deaths'] * 10) / 10
+		let cases = Math.round(row['Cases'] * 10) / 10
+		let vaccinated = Math.round(row['Vaccinated'] * 100)
+		let fullyVaccinated = Math.round(row['Fully Vaccinated'] * 100)
+
+		let html = `
+			<h5>${row['Country']}</h5>
+			<p class="p4">Cases per million</p>
+            <p class="p2">${cases}</p>
+            <p class="p4">Deaths per million</p>
+            <p class="p2">${deaths}</p>
+            <p class="p4">Vaccinated</p>
+            <p class="p2">${vaccinated}%</p>
+            <p class="p4">Fully Vaccinated</p>
+            <p class="p2">${fullyVaccinated}%</p>
+
+
+        `
+		$('#mapoverlay').html(html)
+	});
+}
 
 function populateViz1(data){
 	data.forEach(function(d){
@@ -130,10 +203,11 @@ function createViz1Chart(id,data){
 	if(cases<0 || cases==0){cases = 0.2}
 
  	svg.append('text')
-    	.attr('x',50)
-    	.attr('y',15)
+    	.attr('x',55)
+    	.attr('y',40)
+    	.style("font-size", "12px")
     	.text(data['Country ISO3'])
-    	.attr('text-anchor','middle')
+    	.attr('text-anchor','left')
 
 	let arc1 = d3.arc()
 	    .innerRadius(0)
@@ -449,10 +523,15 @@ function initDataFrame3(data,world){
 		switchFrame(3,map)
 	});
 
+	let sliderLabels = ['Jan 21','Feb 21','Mar 21','Apr 21','May 21','Jun 21','Jul 21','Aug 21','Sep 21','Oct 21','Nov 21','Dec 21','Jan 22','Feb 22','Mar 22','Apr 22','May 22','Jun 22','Jul 22','Aug 22']
+
 	$('#dataframe3slider').on('change',function(){
 		let layer = $(this).val()
 		map.setLayer(layer-1)
+		$('#frame3slidervalue').html(sliderLabels[layer-1])
 	})
+
+	$('#frame3slidervalue').html(sliderLabels[19])
 
 	$('#frame3viz').hide()
 
@@ -504,7 +583,7 @@ function initDataFrame4(data,world){
 		keyValues.push(newValues)
 	})
 
-	let colourBands = [{'value':'none','colour':'#bac8d4'},{'value':0,'colour':'#bac8d4'},{'value':1,'colour':'#C35414'}];
+	let colourBands = [{'value':'none','colour':'#bac8d4'},{'value':0,'colour':'#FFE89C'},{'value':1,'colour':'#C35414'}];
 
 	let map = initMap('frame4map',world,keyValues,colourBands);
 
@@ -588,10 +667,11 @@ function populateFrame4Menu(keys,map){
 
 function populateFrame4Viz(data){
 	data.forEach(function(d,i){
-		let html = `<div class="col-md-2 col-3">
-			<p>${d['Country name']}</p>
-			<div id="app_${d['Country ISO3']}" class="appiconviz">${appIcon}</div>
-		</div>`
+		let html = `
+			<div class="countrystatusbox">
+				<p>${d['Country ISO3']}</p>
+				<div id="app_${d['Country ISO3']}" class="appiconviz">${appIcon}</div>
+			</div>`
 		let continent = d['Continent'].toLowerCase().replace(' ','_')
 		$('#frame4viz_'+continent).append(html);
 		setIcon('#app_'+d['Country ISO3'],d)

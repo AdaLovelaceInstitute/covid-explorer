@@ -15,6 +15,22 @@ function getCountry(){
 	return iso
 }
 
+function populateCountryMenu(data){
+	console.log('menu')
+	console.log(data);
+	let dropdownOptions = []
+	let isoCodes2 = []
+	data.forEach(function(d){
+		if(isoCodes2.indexOf(d['Country ISO3'])==-1){
+			isoCodes2.push(d['Country ISO3'])
+			dropdownOptions.push({'iso':d['Country ISO3'],'country':d['Country']})
+		}
+		
+	});
+	console.log(dropdownOptions)
+	populateCountryDrop(dropdownOptions)
+}
+
 
 function initPage(data){
 	console.log(data);
@@ -92,7 +108,7 @@ function populateDigitalSkills(data){
 }
 
 function createContextGraph(data){
-	let output = [{'colour':'#1494E7','data':[]},{'colour':'#1494E7','data':[]},{'colour':'#00E1B3','data':[]},{'colour':'#00E1B3','data':[]}]
+	let output = [{'colour':'#7c2c77','data':[]},{'colour':'#7c2c77','data':[]},{'colour':'#00E1B3','data':[]},{'colour':'#00E1B3','data':[]}]
 	
 	let keys = ['deaths','cases','vaccinated','fully_vaccinated']
 
@@ -112,7 +128,7 @@ function createContextGraph(data){
 }
 
 function createImplmentationGraph(data,implementation){
-	let margin = {top: 10, right: 30, bottom: 30, left: 60},
+	let margin = {top: 10, right: 45, bottom: 30, left: 60},
     width = $('#implementation').width() - margin.left - margin.right,
     height = 300 - margin.top - margin.bottom;
 
@@ -152,7 +168,7 @@ function createImplmentationGraph(data,implementation){
 
 
     svg.append("path")
-      .datum(data[0].data)
+      .datum(data[1].data)
       .attr("fill", "none")
       .attr("stroke", data[0].colour)
       .attr("stroke-width", 3)
@@ -161,7 +177,7 @@ function createImplmentationGraph(data,implementation){
         .y(function(d) { return y(d.y) })
         )
 
-   	svg.append("path")
+   	/*svg.append("path")
       .datum(data[1].data)
       .attr("fill", "none")
       .attr("stroke", data[1].colour)
@@ -170,7 +186,7 @@ function createImplmentationGraph(data,implementation){
         .x(function(d) { return x(d.x) })
         .y(function(d) { return y(d.y) })
         )
-    .attr('opacity',0.50)
+    .attr('opacity',0.50)*/
 
    	svg.append("path")
       .datum(data[2].data)
@@ -204,6 +220,24 @@ function createImplmentationGraph(data,implementation){
     	.attr('y2',y2(100))
     	.attr('stroke','#000000')
     	.attr('stroke-width','1px')
+
+    svg.append("text")
+	    .attr("class", "y label")
+	    .attr("text-anchor", "end")
+	    .attr("y", -40)
+	    .attr("x", -40)
+	    .style('font-size','10px')
+	    .attr("transform", "rotate(-90)")
+	    .text("Cases per million (7 day average)");
+
+	 	svg.append("text")
+	    .attr("class", "y label")
+	    .attr("text-anchor", "end")
+	    .attr("y", width+35)
+	    .attr("x", -70)
+	    .style('font-size','10px')
+	    .attr("transform", "rotate(-90)")
+	    .text("Vaccination rate (%)");
 }
 
 function processStatusChart(data){

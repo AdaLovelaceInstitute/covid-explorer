@@ -1,0 +1,108 @@
+<html>
+    <head>
+        <title>COVID Monitor</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script
+          src="https://code.jquery.com/jquery-3.6.1.min.js"
+          integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+          crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+        <script
+          src="https://code.jquery.com/jquery-3.6.1.min.js"
+          integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+          crossorigin="anonymous"></script>
+        <link rel="stylesheet" type="text/css" href="css/site.css"/>
+        <script src="https://unpkg.com/papaparse@5.1.1/papaparse.min.js"></script>
+        <script src="https://d3js.org/d3.v7.min.js"></script>       
+    </head>
+    <body>
+        <div id="content" class="container-fluid">
+            <div class="row">
+                <div class="col-md-12 maxwidthcontent">
+                    <p>In 2020 and 2021, the Ada Lovelace Institute conducted extensive research on novel COVID-19 technologies. We organised workshops and webinars, and conducted public attitudes research, evidence reviews and desk research. Additionally, we collected comprehensive evidence, carried out detailed analyses, and engaged with experts and the public.</p> 
+
+                    <p>One of the outputs of this work was the International COVID-19 monitor: vaccine passports and COVID-19 status apps and Covid-19 digital contact tracing tracker which track policy and practices around vaccine passports and contact tracing apps up to October 2021. Since their launch, the monitors have become prominent sources of information for many researchers and journalists.</p>
+
+                    <p>In 2022, we decided to continue monitoring emerging developments in this space, and we partnered with a research design company to collect and visualise the data.</p> 
+
+                    <p>This new COVID-19 Data Explorer: Policies, practices and technology is a repository where individuals and organisations who are interested in COVID-19 technologies can discover and explore policies and practices across the world.</p>
+
+                    <p>To produce the monitor we collected country-specific quantitative and qualitative data on the following:<p>
+                    <ol>
+                        <li><p>Introduction date of vaccine passports</p></li>
+                        <li><p>Protests concerning vaccine passports</p></li>
+                        <li><p>Implementations of vaccine passports, e.g., being mandatory for workplaces, international travel, etc.</p></li>
+                        <li><p>Whether there was a government-launched contact tracing app</p></li>
+                        <li><p>Technical infrastructure of contact tracing apps</p></li>
+                        <li><p>Whether the government-launched contact tracing app includes vaccine information (along with the digital contact tracing feature)</p></li>
+                        <li><p>Cumulative number of cases</p></li>
+                        <li><p>Cumulative number of deaths</p></li>
+                        <li><p>Share of the vaccinated people</p></li>
+                        <li><p>Evidence on governance</p></li>
+                        <li><p>Evidence on technical problems</p></li>
+                        <li><p>Evidence on repurposing the technology</p></li>
+                        <li><p>Evidence on legacy, e.g., whether a vaccine passport has been transformed into a digital identity system</p></li>
+                        <li><p>Evidence on protests</p></li>
+                        <li><p>Sampling</p></li>
+                    </ol>
+
+                    <p>We aimed for regional representation in our sample. We focused on policies and practices in 34 countries in total. Our sampling was based on the geographical regions of North Africa, Central Africa, South Africa, South East Asia, Central Asia, East Asia, North America, South America, Eastern Europe, European Union, Middle East and Oceania.</p>
+
+                    <p>Relying on Our World in Data datasets on the total deaths, total cases, and the share of people who have completed the initial vaccine protocol in 194 countries on 5 June 2022, we created a pandemic impact score for each country, giving equal weight to each of the three variables. In each geographical region, we then selected two countries with the highest impact score, two countries with medium impact score, and two countries with low impact score for detailed review.</p>
+
+                    <h2>Methods and data</h2>
+
+                    <h5>Ada Lovelace Institute datasets</h5>
+
+                    <p>Literature review: We reviewed academic and grey literature and presented the findings of relevant research in country pages.</p>
+
+                    <p>Desk research: We conducted desk research by using a set of keywords for each country in our sample. These keywords include “vaccine certificate”, “vaccine passport”, “immunity certificate”, “digital contact tracing”, “contact tracing app”, “Covid technologies” and “the name of the country.”</p>
+
+                    <p>Call for evidence: In July 2022, we put out an international call for input on the effectiveness and social impact of vaccine passports and digital contact tracing. We used some of the evidence submitted as case studies.</p>
+
+                    <p>We then coded this information under the following data categories:</p>
+
+                    <ol>
+                        <li><p>Emergence of vaccine passports (introduction dates of vaccine passports)</p></li>
+                        <li><p>Policies of vaccine passports (domestic and international policies)</p></li>
+                        <li><p>Whether there was a government-launched contact tracing app</p></li>
+                        <li><p>Whether the government-launched contact tracing app includes vaccine information</p></li>
+                        <li><p>Technical infrastructure of contact tracing apps</p></li>
+                        <li><p>Governance</p></li>
+                        <li><p>Technical problems</p></li>
+                        <li><p>Repurposing the technology</p></li>
+                        <li><p>Legacy</p></li>
+                        <li><p>Public attitudes</p></li>
+                    </ol>
+
+                    <h5>External datasets</h5>
+                    <p>We utilised quantitative datasets of existing trackers and monitors for the following data categories:</p>
+                    <ol>
+                        <li><p>Proportion of the vaccinated people from ourworldindata</p></li>
+                        <li><p>Cumulative number of cases from ourworldindata</p></li>
+                        <li><p>Cumulative number of deaths from ourworldindata</p></li>
+                    </ol>
+
+
+                    <h2>Limitations and strengths</h2> 
+
+                    <p>Currently there are 34 countries in our sample. Although we aimed for regional representation in our sample, we do not claim to have exhaustive evidence of what has happened in every continent, region or country. The evidence on COVID-19 technologies is sparse. In order to address these limitations we utilised a variety of sources, including media outlets, research papers, government websites, and the evidence submitted to Ada. Nevertheless, compared to more traditional health technologies or policy interventions, there has been a paucity of evidence base which indicates the lack of in-depth evaluation and research on these novel technologies at an international level. This prevents us from determining whether to use them in future public crises, and if yes so, how to effectively utilise and govern them.</p> 
+
+                    <p>Despite the patchy evidence base, the COVID-19 technologies explorer offers a valuable synopsis of when these technologies were rolled out and how they have been governed across the world. There are other COVID-19 technologies trackers which provide useful insights. What distinguishes ours is that it allows to have a global view of introduction and implementations of these technologies while exploring country-specific research, news stories and regulations.</p> 
+
+                    <p>We will continue to monitor the usages and transformations of these technologies and update our data periodically. We believe that civil society, researchers and policymakers should continue conducting research concerning novel pandemic technologies and hope the monitor will be a valuable informational resource.</p> 
+
+                    <p>We also recognise that as a UK-based organisation, there may be evidence emerging from various parts of the world which we have not been able to discover. Our country-specific data on governance, legacy and public attitudes draws on media reports and research papers in English language - although there are exceptions.</p>  
+
+                    <p>A language barrier has also emerged in our policy analysis. We aimed to collect data on policies and regulations from government websites and official policy papers. We used Google Translate to conduct research in the official language(s) of the countries in our sample. Unfortunately, this endeavour was sometimes futile, and we could not find official policy papers of many countries.</p>  
+
+                    <p>For some countries, the evidence submitted was helpful as it either provided us with the missing information or confirmed that the respective country did not have an official regulation (or protocol) to govern vaccine passports and/or contact tracing apps. We would welcome the contribution of researchers, journalists, experts, and the public to help us add more information and update policies and practices as/if needed.</p>
+
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

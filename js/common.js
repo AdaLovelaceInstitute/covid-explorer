@@ -11,9 +11,11 @@ let statusText = [
 
 function setIcon(id,data){
 	console.log(data);
+
 	console.log(data['App Launched'])
+
 	if(data['App Launched']=='No' || data['App Launched']=='N/A'){
-		$(id).html('<p>No App</p>');
+		$(id + ' svg').attr('opacity',0)
 	}
 	if(data['QR code']=='No' || data['QR code']=='N/A'){
 		$(id + ' #qr').hide();
@@ -33,12 +35,15 @@ function setIcon(id,data){
 	if(data['Decentralised']=='No' || data['Decentralised']=='N/A'){
 		$(id + ' #decentralised').hide();
 	}
+	if(data['Centralised']=='Yes'){
+		$(id + ' #path16').css('fill','#FFD139');
+	}
 }
 
 function createStatusChart(data,status){
 	console.log(data)
 	console.log(status)
-
+	console.log('status chart')
 	let divWidth = 300
 	if($('#implementation').length>0){
 		divWidth = $('#implementation').width()
@@ -77,7 +82,7 @@ function createStatusChart(data,status){
     svg.append("path")
       .datum(data)
       .attr("fill", "none")
-      .attr("stroke",'#1494E7')
+      .attr("stroke",'#7c2c77')
       .attr("stroke-width", 3)
       .attr("d", d3.line()
         .x(function(d) { return x(d.x) })
@@ -114,6 +119,15 @@ function createStatusChart(data,status){
     		return (i+1)
     	})
     	.attr('dx',-5)
+
+     svg.append("text")
+	    .attr("class", "y label")
+	    .attr("text-anchor", "end")
+	    .attr("y", -40)
+	    .attr("x", -40)
+	    .style('font-size','10px')
+	    .attr("transform", "rotate(-90)")
+	    .text("Cases per million (7 day average)");
 }
 
 function createStatusText(status){
@@ -126,3 +140,16 @@ function createStatusText(status){
 		$('#statuschanges').append(html);
 	});
 }
+
+function populateCountryDrop(data){
+	data.forEach(function(d){
+		let html = `<a class="dropdown-item" href="country.html?iso=${d['iso']}">${d['country']}</a>`
+		$('#countrydropdownitems').append(html)
+	});
+}
+
+
+
+
+
+
