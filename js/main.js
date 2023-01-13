@@ -13,14 +13,14 @@ function init(){
 	$('#frame_4').hide()
 	let height = $(window).height()-32
 	console.log(height)
-	$('.level1nav').css({'maxHeight':(height+2)+'px'});
-	$('.level2nav').css({'maxHeight':height+'px'});
-	$('#frame3viz').css({'maxHeight':height+'px'});
-	$('#frame2mapcontainer').css({'maxHeight':height+'px'});
-	$('#frame3mapcontainer').css({'maxHeight':height+'px'});
-	$('#frame2viz').css({'maxHeight':height+'px'});
-	$('#frame4viz').css({'maxHeight':height+'px'});
-	$('#frame1viz').css({'maxHeight':height+'px'});
+	$('.level1nav').css({'height':(height+2)+'px'});
+	$('.level2nav').css({'height':height+'px'});
+	$('#frame3viz').css({'height':height+'px'});
+	$('#frame2mapcontainer').css({'height':height+'px'});
+	$('#frame3mapcontainer').css({'height':height+'px'});
+	$('#frame2viz').css({'height':height+'px'});
+	$('#frame4viz').css({'height':height+'px'});
+	$('#frame1viz').css({'height':height+'px'});
 	initDataLoading()
 
 }
