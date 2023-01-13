@@ -37,7 +37,7 @@ function loadCountryData(iso3){
 		
 	}
 
-	let secondaryURL = `../data/country_data_secondary/${iso3}.json`
+	let secondaryURL = `data/country_data_secondary/${iso3}.json`
 
 	loadJSONData(secondaryURL,secondaryDataload);
 
