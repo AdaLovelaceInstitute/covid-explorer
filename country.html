@@ -15,6 +15,7 @@
         <script src="https://d3js.org/d3.v7.min.js"></script>       
     </head>
     <body>
+        <div class="loader"></div>
         <div id="content" class="container-fluid maxwidthcontent">
             <div id="headerrow" class="row">
                 <p>Select another country</p>
@@ -30,8 +31,8 @@
             <div class="row">
                 <div id="implementation" class="col-md-4">
                     <div class="infobox">
-                        <p class="h7 sectionheader">Context of Emergence of Vaccine Passports</p>
-                        <p class="p2">Data source</p>
+                        <p class="h7 sectionheader">Context of emergence of vaccine passports</p>
+                        <p class="p2">Data source: <a class="source" href="https://docs.google.com/spreadsheets/d/1uiaJOcfw3gwD4F4c3v9n8VKH41JlhxllD5-wxpdY7Oo/edit#gid=1390441830">Ada Lovelace Institute</a>, <a  class="source" href="https://ourworldindata.org/coronavirus">OurWorldInData</a></p>
                         <p class="p2">Date of Introduction: <span id="introdate"></span></p>
                         <div id="contextgraph"></div>
                         <div>
@@ -43,8 +44,8 @@
                 </div>
                 <div class="col-md-4">
                         <div class="infobox">
-                        <p class="h7 sectionheader">Changes in Vaccine Passport Policies</p>
-                        <p class="p2">Data source</p>
+                        <p class="h7 sectionheader">Changes in vaccine passport policies</p>
+                        <p class="p2">Data source: <a class="source" href="https://docs.google.com/spreadsheets/d/1uiaJOcfw3gwD4F4c3v9n8VKH41JlhxllD5-wxpdY7Oo/edit#gid=1390441830">Ada Lovelace Institute</a>, <a  class="source" href="https://ourworldindata.org/coronavirus">OurWorldInData</a></p>
                         <p class="p2">.</p>
                         <div id="statusgraph"></div>
                         <div>
@@ -54,11 +55,12 @@
                 </div>
                 <div class="col-md-4">
                     <div class="infobox">
-                        <p class="h7 sectionheader">Implementation Types of CTAs</p>
-                        <p class="p2">Data source</p>
+                        <p class="h7 sectionheader">Implementation types of CTAs</p>
+                        <p class="p2">Data source: <a class="source" href="https://docs.google.com/spreadsheets/d/1uiaJOcfw3gwD4F4c3v9n8VKH41JlhxllD5-wxpdY7Oo/edit#gid=1390441830">Ada Lovelace Institute</a></p>
                         <div id="ctaappicon"></div>
                         <div id="ctaapptext">
                             <p id="text_decentralised"><img id="icon_decentralised_yes" src="images/Yes.svg" /><img id="icon_decentralised_no" src="images/No.svg" /> Decentralised</p>
+                             <p id="text_centralised"><img id="icon_centralised_yes" src="images/Yes.svg" /><img id="icon_centralised_no" src="images/No.svg" /> Centralised</p>
                             <p id="text_vaccine"><img id="icon_vaccine_yes" src="images/Yes.svg" /><img id="icon_vaccine_no" src="images/No.svg" /> Stores Vaccine Information</p>
                             <p id="text_qr"><img  id="icon_qr_yes" src="images/Yes.svg" /><img id="icon_qr_no" src="images/No.svg" /> QR Codes</p>
                             <p id="text_bluetooth"><img  id="icon_bluetooth_yes" src="images/Yes.svg" /><img id="icon_bluetooth_no" src="images/No.svg" /> Bluetooth Standard</p>
@@ -70,7 +72,8 @@
             </div>
             <div class="row">
                 <div class="col-12 infobox">
-                    <p class="h7 sectionheader">Government and Social Impact</p>
+                    <p class="h7 sectionheader">Government and social impact</p>
+                    <p class="p2">Data source: <a class="source" href="https://docs.google.com/spreadsheets/d/1uiaJOcfw3gwD4F4c3v9n8VKH41JlhxllD5-wxpdY7Oo/edit#gid=1390441830">Ada Lovelace Institute</a></p>
                     <table id="qualtable" class="table">
                         <tr><th>Type</th><th>Text</th><th>Link</th></tr>
                     </table>
@@ -78,14 +81,16 @@
             </div>
             <div class="row">
                 <div class="col-md-4 infobox">
-                    <p class="h7">Vaccine Supply</p>
+                    <p class="h7">Vaccine supply</p>
+                    <p class="p2">Data source: <a class="source" href="https://www.imf.org/en/Topics/imf-and-covid19/IMF-WHO-COVID-19-Vaccine-Tracker">WHO Vaccine Supply Tracker</a></p>
+                    <div id="vaccine_supply"></div>
                 </div>
                 <div class="col-md-4 infobox">
-                    <p class="h7">Digital Skill Score</h7>
-                    <p class="p2">Data source</p>
+                    <p class="h7">Digital skill score</h7>
+                    <p class="p2">Data source: <a class="source" href="https://dsgi.wiley.com/global-rankings/">Wiley</a></p>
                     <p id="digitalscore" class="p3"></p>
-                    <p class="h7">Digital Skill Rank</p>
-                    <p class="p2">Data source</p>
+                    <p class="h7">Digital skill rank</p>
+                    <p class="p2">Data source: <a class="source" href="https://dsgi.wiley.com/global-rankings/">Wiley</a></p>
                     <p id="digitalrank" class="p3"></p>
                 </div>
             </div>

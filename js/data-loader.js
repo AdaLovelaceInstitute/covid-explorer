@@ -14,7 +14,7 @@ function loadCountryData(iso3){
 		'protests':[],
 		'qualitative':[],
 		'ctas':{},
-		'loaded':6,
+		'loaded':7,
 		'country':''
 	}
 
@@ -97,6 +97,17 @@ function loadCountryData(iso3){
 	let qualURL = 'https://proxy.hxlstandard.org/data.json?dest=data_view&url=https%3A%2F%2Fdocs.google.com%2Fspreadsheets%2Fd%2F1uiaJOcfw3gwD4F4c3v9n8VKH41JlhxllD5-wxpdY7Oo%2Fedit%23gid%3D495802405'
 
 	loadHXLData(qualURL,qualLoad)
+
+	//vaccine supply
+
+	let vacLoad = function(data){
+		countryData['vaccine_supply'] = getCountryData(data,iso3)
+		initCountryPage()
+	}
+
+	let vacURL = 'https://proxy.hxlstandard.org/data.json?dest=data_view&url=https%3A%2F%2Fdocs.google.com%2Fspreadsheets%2Fd%2F1uiaJOcfw3gwD4F4c3v9n8VKH41JlhxllD5-wxpdY7Oo%2Fedit%23gid%3D445914991'
+
+	loadHXLData(vacURL,vacLoad)
 }
 	
 

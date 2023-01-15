@@ -1,6 +1,7 @@
 function init(){
 	let iso = getCountry()
 	console.log(iso)
+	$('#content').hide()
 	loadCountryData(iso);
 }
 
@@ -16,6 +17,8 @@ function getCountry(){
 }
 
 function populateCountryMenu(data){
+	$('.loader').hide()
+	$('#content').show()
 	console.log('menu')
 	console.log(data);
 	let dropdownOptions = []
@@ -40,6 +43,83 @@ function initPage(data){
 	createAppIcon(data)
 	populateQualData(data['qualitative'])
 	populateDigitalSkills(data)
+	populateVaccineSupply(data.vaccine_supply)
+}
+
+function populateVaccineSupply(data){
+	console.log(data);
+	if(data.length==0){
+		console.log('no vaccine data')
+		$('#vaccine_supply').html('<p>WHO vaccine tracker does not supply enough details to break down vaccine supply by month</p>')
+	} else {
+		processData = []
+		total = 0
+		data.forEach(function(d){
+			console.log(d)
+			date = d3.timeParse("%Y-%m-%d")(d['Report Date'])
+			total = total + d['Number of doses']/d['Population']
+			value = total
+			processData.push({'date':date,'value':value})
+		})
+		console.log(processData)
+		createSupplyGraph(processData)
+	}
+}
+
+function createSupplyGraph(data){
+	let margin = {top: 10, right: 45, bottom: 30, left: 60},
+    width = $('#implementation').width() - margin.left - margin.right,
+    height = 300 - margin.top - margin.bottom;
+
+	// append the svg object to the body of the page
+	let svg = d3.select("#vaccine_supply")
+	  .append("svg")
+	    .attr("width", width + margin.left + margin.right)
+	    .attr("height", height + margin.top + margin.bottom)
+	  .append("g")
+	    .attr("transform",
+	          "translate(" + margin.left + "," + margin.top + ")")
+
+
+	let x = d3.scaleTime()
+      .domain(d3.extent(data, function(d) { return d.date; }))
+      .range([ 0, width ]);
+    svg.append("g")
+      .attr("transform", "translate(0," + height + ")")
+      .call(d3.axisBottom(x).ticks(6))
+
+      let length = data.length
+    // Add Y axis
+    let y = d3.scaleLinear()
+      .domain([0, data[length-1].value*100])
+      .range([ height, 0 ]);
+
+    svg.append("g")
+      .call(d3.axisLeft(y).ticks(5));
+
+      console.log(data)
+    svg.append("path")
+      .datum(data)
+      .attr("fill", "none")
+      .attr("stroke", '#BAC8D4')
+      .attr("stroke-width", 3)
+      .attr("d", d3.line()
+        .x(function(d) { console.log(d);return x(d.date) })
+        .y(function(d) { return y(d.value*100) })
+        )
+
+
+
+
+    svg.append("text")
+	    .attr("class", "y label")
+	    .attr("text-anchor", "end")
+	    .attr("y", -40)
+	    .attr("x", -40)
+	    .style('font-size','10px')
+	    .attr("transform", "rotate(-90)")
+	    .text("Vaccine supply as percent of population (%)");
+
 }
 
 function createAppIcon(data){
@@ -90,6 +170,13 @@ function createAppText(data){
 		$('#icon_decentralised_yes').hide()
 	} else {
 		$('#icon_decentralised_no').hide()
+	}
+
+	if(data['Centralised']=='No' || data['Centralised']=='N/A'){
+		$('#text_centralised').addClass('apptextno')
+		$('#icon_centralised_yes').hide()
+	} else {
+		$('#icon_centralised_no').hide()
 	}
 }
 

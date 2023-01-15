@@ -39,11 +39,6 @@ h2 {
 	font-weight: 400;
 	font-size: 30px;
 	line-height: 34px;
-	text-transform: lowercase;
-}
-
-h2:first-letter {
-  text-transform: uppercase;
 }
 
 h4 {
@@ -53,11 +48,6 @@ h4 {
 	font-size: 22px;
 	line-height: 24px;
 	text-align: center;
-	text-transform: lowercase;
-}
-
-h4:first-letter {
-  text-transform: uppercase;
 }
 
 
@@ -67,11 +57,6 @@ h5 {
 	font-weight: 500;
 	font-size: 18px;
 	line-height: 20px;
-	text-transform: lowercase;
-}
-
-h5:first-letter {
-  text-transform: uppercase;
 }
 
 
@@ -82,11 +67,6 @@ h6 {
 	font-size: 16px;
 	line-height: 18px;
 	color: #000000;
-	text-transform: lowercase;
-}
-
-h6:first-letter {
-  text-transform: uppercase;
 }
 
 .h7 {
@@ -96,11 +76,6 @@ h6:first-letter {
 	line-height: 24px;
 	color: #000000;
 	margin-bottom: 16px;
-	text-transform: lowercase;
-}
-
-.h7:first-letter {
-  text-transform: uppercase;
 }
 
 p {
@@ -566,4 +541,12 @@ input[type=range] {
 
 .frontpagebutton {
 	background-color:  #000;
+}
+
+.source {
+	color: #000;
+}
+
+.source:hover {
+	color: #000;
 }
