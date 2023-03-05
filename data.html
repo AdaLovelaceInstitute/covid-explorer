@@ -24,23 +24,25 @@
                     <div class="col-md-3 level1nav">
                         <div class="nav-group">
                             <h2>COVID-19 data explorer: Policies, practices and technology</h2>
+                            <p>Last Updated: <span id="updatedate"></span></p>
+                            <p><a href="about.html" class="source" >About</a></p>
                         </div>
                         <div class="nav-group">
                             <h5>Vaccine Passports</h5>
                             <div>
-                                <button id="framenav1" class="btn topframenav activenav" data-id="frame_1"><h5>Emergence of vaccine passports</h5></button>
+                                <button id="framenav1" class="btn topframenav activenav" data-id="frame_1"><h5>Vaccine passport systems</h5></button>
                             </div>
                             <div>
-                                <button id="framenav2" class="btn topframenav" data-id="frame_2"><h5>Types of policies of vaccine passports</h5></button>
+                                <button id="framenav2" class="btn topframenav" data-id="frame_2"><h5>Vaccine passport restrictions</h5></button>
                             </div>
                         </div>
                         <div class="nav-group">
                             <h5>Contact tracing apps</h5>
-                            <button id="framenav4" class="btn topframenav" data-id="frame_4"><h5>Technical infrastructure of contract tracing apps</h5></button>
+                            <button id="framenav4" class="btn topframenav" data-id="frame_4"><h5>Contact tracing systems</h5></button>
                         </div>
                         <div class="nav-group">
                             <h5>Protests</h5>
-                            <button id="framenav3" class="btn topframenav" data-id="frame_3"><h5>Protests against vaccine passports and mobility restrictions</h5></button>
+                            <button id="framenav3" class="btn topframenav" data-id="frame_3"><h5>Protests against vaccine passports</h5></button>
                         </div>
                         <div class="nav-group">
                             <h5>Country Pages</h5>
@@ -57,7 +59,7 @@
                         <div id="frame_1" class="row frame gx-0">
                             <div id="frame1nav" class="col-md-3 level2nav">
                                 <div class="nav2group">
-                                    <h2>Emergence of vaccine passports</h2>
+                                    <h2>Vaccine passport systems</h2>
                                     <p class="p2">Data source: <a class="source" href="https://docs.google.com/spreadsheets/d/1uiaJOcfw3gwD4F4c3v9n8VKH41JlhxllD5-wxpdY7Oo/edit#gid=1390441830">Ada Lovelace Institute</a>, <a  class="source" href="https://ourworldindata.org/coronavirus">OurWorldInData</a></p>
                                     <div class="btn-group" role="group" aria-label="Default button group">
                                           <button id="frame1navmap" type="button" class="btn btn-outline-dark nav2 active2nav"><p class="p2button">Map</p></button>
@@ -78,7 +80,15 @@
                                 </div>
                                 <div id="frame1legend1" class="nav2groupplain">
                                     <h5>Key insights</h5>
-                                    <p>1. Asian and European countries were amongst the first to introduce vaccine passports in Q1 2021.</p><p>2. Majority of the European countries followed suite in July 2021.<p>3. North and South America from June 2021.</p><p>4. Oceana from September 2021. There was a considerable difference in when vaccine passports were rolled out across the world. Explore the number of deaths, cases, vaccinated people in the chart view.</p>
+                                    <p>There was a considerable difference in when vaccine passports were rolled out across the world. Vaccine passports were introduced in:</p>
+                                    <ul>
+                                        <li><p>Many Asian countries in quarter 1 2021</p></li>
+                                        <li><p>The majority of European countries in quarter 2 2021</p></li>
+                                        <li><p>North and South America from quarter 2 2021</p></li>
+                                        <li><p>Oceana from quarter 3 2021</p></li>
+                                    </ul>
+                                    <p>Explore the number of deaths, cases, and vaccinated people in the chart view.</p>
+                                    <p>Some countries, which do not have national or federal vaccine passports, are not included in this dataset. e.g., Russia and the USA.</p>
                                 </div>
                                 <div id="frame1legend2" class="nav2groupplain">
                                     <p><i class="colourkeyblock" style="background-color:#7C2C77"></i>Case rate 7 day average</p>
@@ -89,13 +99,13 @@
                             </div>
                             <div id="frame1data" class="col-md-9 level2frame">
                                 <div id="frame1map" class="datamap"></div>
-                                <div id="frame1viz"></div>
+                                <div id="frame1viz"><h5>Vaccine passport date of introduction</h5></div>
                             </div>
                         </div>
                         <div id="frame_2" class="row frame gx-0">
                             <div id="frame2nav" class="col-md-3 level2nav">
                                 <div class="nav2group">
-                                    <h2>Types of policies of vaccine passports</h2>
+                                    <h2>Vaccine passport restrictions</h2>
                                     <p class="p2">Data source: <a class="source" href="https://docs.google.com/spreadsheets/d/1uiaJOcfw3gwD4F4c3v9n8VKH41JlhxllD5-wxpdY7Oo/edit#gid=1390441830">Ada Lovelace Institute</a></p>
                                     <div class="btn-group" role="group" aria-label="Default button group">
                                           <button id="frame2navmap" type="button" class="btn btn-outline-dark nav2 active2nav"><p class="p2button">Map</p></button>
@@ -106,24 +116,23 @@
                                     <h5>Countries in dataset</h5>
                                     <p class="p3"><span id="frame2allcountries"></span></p>
                                     <i class="colourkeyblocklarge" style="background-color:#c43b3d;"></i>
-                                    <h5>Countries that made 4–5 changes to policy</h5>
+                                    <h5>Countries that made 4–5 changes to restrictions</h5>
                                     <p class="p3"><span id="frame24countries"></span></p>
                                     <i class="colourkeyblocklarge" style="background-color:#d3a522;"></i>
-                                    <h5>Countries that made 3 changes to policy</h5>
+                                    <h5>Countries that made 3 changes to restrictions</h5>
                                     <p class="p3"><span id="frame23countries"></span></p>
                                     <i class="colourkeyblocklarge" style="background-color:#ffd139;"></i>
-                                    <h5>Countries that made 2 changes to policy</h5>
+                                    <h5>Countries that made 2 changes to restrictions</h5>
                                     <p class="p3"><span id="frame22countries"></span></p>
                                     <i class="colourkeyblocklarge" style="background-color:#ffe89c;"></i>
-                                    <h5>Countries that made 1 changes to policy</h5>
+                                    <h5>Countries that made 1 changes to restrictions</h5>
                                     <p class="p3"><span id="frame21countries"></span></p>
                                 </div>
                                 <div id="frame2legend2" class="nav2group">
                                     <h5>Key insights</h5>
-                                    <p>Vaccine passports were rolled out without consensus on how to effectively utilise them. Varying pandemic management approaches have led to differences in countries' policies.</p>
-                                    <p>Big countries with regional governmental jurisdictions do not have federal vaccine passport policy. Regional authorities decide whether and how to impose vaccine passport requirements, e.g., Brazil, China and the United States.</p> 
-                                    <div class="implementationbox2"><img class="implementationimg" src="images/implementation_key.svg" width="30"></div><div class="implementationdef"><p>A. International Vaccine Passport Schemes Providing valid vaccine passport to prove immunity status when traveling from one country to another.</p><p>B. Domestic Vaccine Passport Schemes Providing valid vaccine passport to prove immunity status when entering public spaces.</p></div>
-                                    <h5>Not in use for both domestically and internationally</h5>
+                                    <p>“Larger countries with regional governmental jurisdictions do not have federal vaccine passport policies. Regional authorities decide whether and how to impose vaccine passport requirements, e.g., Brazil, China and the United States.</p>
+                                    <div class="implementationbox2"><img class="implementationimg" src="images/implementation_key.svg" width="30"></div><div class="implementationdef"><p>A. International Vaccine Passport Schemes Providing valid vaccine passport to prove immunity status when entering country.</p><p>B. Domestic Vaccine Passport Schemes Providing valid vaccine passport to prove immunity status when entering public spaces.</p></div>
+                                    <h5>Not in use domestically and internationally</h5>
                                     <div class="implementationbox2"><span class="p2 implementationtext">1</span><img class="implementationimg" src="images/implementation_type_1.svg" width="30"></div><div class="implementationdef"><p>VP not in use or not enforced. Available but not compulsory.</p></div>
                                     <h5>Partially in use</h5>
                                     <div class="implementationbox2"><span class="p2 implementationtext">2</span><img class="implementationimg" src="images/implementation_type_2.svg" width="30"></div><div class="implementationdef"><p>Mandatory for in-bound travellers.<br /></p></div>
@@ -131,8 +140,8 @@
                                     <div class="implementationbox2"><span class="p2 implementationtext">4</span><img class="implementationimg" src="images/implementation_type_4.svg" width="30"></div><div class="implementationdef"><p>Mandatory for foreign visitors but not for returning nationals and residents. Domestic use decided by regional governments.</p></div>
                                     <div class="implementationbox2"><span class="p2 implementationtext">5</span><img class="implementationimg" src="images/implementation_type_5.svg" width="30"></div><div class="implementationdef"><p>Mandatory for in-bound travellers. Domestic use decided by regional governments.</p></div>
                                     <div class="implementationbox2"><span class="p2 implementationtext">6</span><img class="implementationimg" src="images/implementation_type_6.svg" width="30"></div><div class="implementationdef"><p>Mandatory for foreign visitors, but not for returning nationals and residents. Domestic use decided at a federal level.</p></div>
-                                    <div class="implementationbox2"><span class="p2 implementationtext">7</span><img class="implementationimg" src="images/implementation_type_7.svg" width="30"></div><div class="implementationdef"><p>Mandatory for self-isolation for visitors, regardless of possession of vaccine passport.</p></div>
-                                    <h5>In use for both domestically and internationally</h5>
+                                    <div class="implementationbox2"><span class="p2 implementationtext">7</span><img class="implementationimg" src="images/implementation_type_7.svg" width="30"></div><div class="implementationdef"><p>Mandatory self-isolation of visitors, regardless of possession of vaccine passport.</p></div>
+                                    <h5>In use domestically and internationally</h5>
                                     <div class="implementationbox2"><span class="p2 implementationtext">8</span><img class="implementationimg" src="images/implementation_type_8.svg" width="30"></div><div class="implementationdef"><p>Mandatory self-islation for visitors, regardless of vaccine passport. Federal policy for domestic use.</p></div>
                                 </div>
                             </div>
@@ -174,7 +183,7 @@
                         <div id="frame_3" class="row frame gx-0">
                             <div id="frame3nav" class="col-md-3 level2nav">
                                 <div class="nav2group">
-                                    <h2>Protests against vaccine passports and mobility restrictions</h2>
+                                    <h2>Protests against vaccine passports</h2>
                                     <p class="p2">Data source: <a class="source" href="https://docs.google.com/spreadsheets/d/1uiaJOcfw3gwD4F4c3v9n8VKH41JlhxllD5-wxpdY7Oo/edit#gid=1390441830">Ada Lovelace Institute</a>
                                     <div class="btn-group" role="group" aria-label="Default button group">
                                           <button id="frame3navmap" type="button" class="btn btn-outline-dark nav2 active2nav"><p class="p2button">Map</p></button>
@@ -189,17 +198,18 @@
                                 </div>
                                 <div class="nav2groupplain">
                                     <h5>Legend</h5>
-                                    <p><i class="colourkeyblock" style="background-color:#c43b3d;"></i>Country with Protest</p>
-                                    <p><i class="colourkeyblock" style="background-color:#ffe89c;"></i>Country without Protest</p>
+                                    <p><i class="colourkeyblock" style="background-color:#c43b3d;"></i>Country with protests</p>
+                                    <p><i class="colourkeyblock" style="background-color:#ffe89c;"></i>Country without protests</p>
                                 </div>
                                 <div class="nav2groupplain">
-                                    <p>1. Nearly 50% of the countries in our sample had protests against vaccine passports and mobility restrictions.</p>
-                                    <p>2. Protests reveal the importance of building public legitimay with strong governance mechanisms and transparent and effective communication strategies.</p>
-                                    <p>3. In most cases, anti-vaccine passport protests started amid mandatory domestic vaccine passport schemes.</p>
-                                    <p>4. This demonstrates the public resistance against using data-driven technology to control mobility and restrict freedoms.</p>
+                                    <h5>Key insights</h5>
+                                    <p>1. More than 50% of the countries in our sample had protests against vaccine passports and mobility restrictions.</p>
+                                    <p>2. Protests reveal the importance of building public legitimacy with strong governance and transparent and effective communication strategies..</p>
+                                    <p>3. In most cases, anti-vaccine passport protests started following the announcement of mandatory domestic vaccine passport schemes.</p>
+                                    <p>4. This demonstrates public resistance to using data-driven technology to control mobility and restrict freedoms.</p>
                                 </div>
                                 <div class="nav2groupplain">
-                                    <p>Not every news article makes an explicit link to vaccine passports, but mandatory vaccine policies have been facililated by digital vaccine passports which allowed authorities to control individual's freedoms and access based on their health status. Governments introduced mandatory vaccine policies after they had rolled out vaccine passports. It was hoped that mandatory vaccine passports would incentivise people to get vaccinated, but as can be seen, different sub-groups in society protested this approach and resisted mandatory vaccien passport policies.</p>
+                                    <p>The media did not always explicitly link protests with vaccine passports. However, mandatory vaccination policies were made possible by digital vaccine passports, which allowed authorities to control an individual’s freedoms and access based on their health status. It was hoped that the vaccine passports would incentivise people to get vaccinated, but different sub-groups in society protested this approach and resisted mandatory vaccine passports.</p>
                                 </div>
                             </div>
 
@@ -222,7 +232,7 @@
                         <div id="frame_4" class="row frame gx-0">
                             <div id="frame4nav" class="col-md-3 level2nav">
                                 <div class="nav2group">
-                                    <h2>Technical infrastructure of contract tracing apps</h2>
+                                    <h2>Contact tracing systems</h2>
                                     <p class="p2">Data source: <a class="source" href="https://docs.google.com/spreadsheets/d/1uiaJOcfw3gwD4F4c3v9n8VKH41JlhxllD5-wxpdY7Oo/edit#gid=1390441830">Ada Lovelace Institute</a>
                                     <div class="btn-group" role="group" aria-label="Default button group">
                                           <button id="frame4navmap" type="button" class="btn btn-outline-dark nav2 active2nav"><p class="p2button">Map</p></button>
@@ -232,8 +242,10 @@
                                 <div id="frame4legend1" class="nav2groupplain">
                                     <div>
                                         <h5>Legend</h5>
-                                        <p><i class="colourkeyblock" style="background-color:#c43b3d;"></i>Country with Technology</p>
-                                        <p><i class="colourkeyblock" style="background-color:#ffe89c;"></i>Country without Technology</p>
+                                        <p><i class="colourkeyblock" style="background-color:#c43b3d;"></i>Country with technology</p>
+                                        <p><i class="colourkeyblock" style="background-color:#ffe89c;"></i>Country without technology</p>
+                                        <p><i class="colourkeyblock" style="background-color:#bac8d4;"></i>N/A</p>
+                                        <p><i class="colourkeyblock" style="background-color:#d5e0e8;"></i>Not in data set</p>
                                     </div>
 
                                     <div id="frame4layers">
@@ -245,33 +257,33 @@
                                     <div>
                                         <h5>Legend</h5>
                                         <img id="legendcta" src="images/cta_Legend.svg" alt="Legend for app icons" width="120px">
-                                        <p>1 GAEN API</p>
+                                        <p>1. GAEN API</p>
                                         <p><i class="legendblock" style="background-color:#FFD139;"></i> Centralised</p>
-                                        <p>3 Decentralised</p>
-                                        <p>4 Stores vaccine info</p>
-                                        <p>5 QR code</p>
-                                        <p>6 Location data</p>
-                                        <p>7 Blutooth standard</p>
+                                        <p>3. Decentralised</p>
+                                        <p>4. Stores vaccine info</p>
+                                        <p>5. QR code</p>
+                                        <p>6. Location data</p>
+                                        <p>7. Blutooth standard</p>
                                     </div>
-                                    <div>
+                                    <div class="topspace">
+                                        <h5>Store vaccine information</h5>
+                                        <p class="p3"><span id="frame4vaccine"></span></p>
+                                        <h5>QR codes</h5>
+                                        <p class="p3"><span id="frame4qr"></span></p>
+                                        <h5>Bluetooth technology</h5>
+                                        <p class="p3"><span id="frame4bluetooth"></span></p>
+                                        <h5>Location data</h5>
+                                        <p class="p3"><span id="frame4location"></span></p>
+                                        <h5>GAEN API</h5>
+                                        <p class="p3"><span id="frame4gaen"></span></p>
                                         <h5>Centralised</h5>
                                         <p class="p3"><span id="frame4centralised"></span></p>
                                         <h5>Decentralised</h5>
-                                        <p class="p3"><span id="frame4decentralised"></span></p>
-                                        <h5>Store Vaccine Information</h5>
-                                        <p class="p3"><span id="frame4vaccine"></span></p>
-                                        <h5>QR Codes</h5>
-                                        <p class="p3"><span id="frame4qr"></span></p>
-                                        <h5>Bluetooth Technology</h5>
-                                        <p class="p3"><span id="frame4bluetooth"></span></p>
-                                        <h5>Location Data</h5>
-                                        <p class="p3"><span id="frame4location"></span></p>
-                                        <h5>GAEN API</h5>
-                                        <p class="p3"><span id="frame4gaen"></span></p>                                       
+                                        <p class="p3"><span id="frame4decentralised"></span></p>                                       
                                     </div>
                                 </div>
                                 <div class="nav2groupplain">
-                                    <p>We could not get detailed information on some countries' contact tracing apps. We would welcome contributions from researchers, policymakers and the members of the public to complete our dataset.</p>
+                                    <p>This page covers national and federal government-launched contact tracing apps. It was not possible to find detailed information on contact tracing apps in some countries.</p>
                                 </div>
                             </div>
                             <div id="frame4data" class="col-md-9 level2frame">
@@ -311,6 +323,10 @@
         <div id="mapoverlay">
             <p>tempt overlay content</p>
         </div>
+        <div id="helpoverlay">
+            <p>tempt overlay content</p>
+        </div>
+        <script src="js/date.js"></script> 
         <script src="js/icon.js"></script> 
         <script src="js/chart1.js"></script> 
         <script src="js/common.js"></script> 

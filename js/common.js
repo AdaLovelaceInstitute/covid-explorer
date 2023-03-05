@@ -14,30 +14,70 @@ function setIcon(id,data){
 
 	console.log(data['App Launched'])
 
-	if(data['App Launched']=='No' || data['App Launched']=='N/A'){
+	let implementedText = '';
+
+	if(data['App Launched']=='No'){
 		$(id + ' svg').attr('opacity',0)
+	} else if(data['App Launched']=='N/A'){
+		$(id + ' svg').attr('opacity',0.25)
 	}
-	if(data['QR code']=='No' || data['QR code']=='N/A'){
+
+	if(data['QR code']=='No'){
 		$(id + ' #qr').hide();
+	} else if(data['QR code']=='N/A'){
+		$(id + ' #qr').attr('opacity',0.25);
+	} else {
+		implementedText+= ' QR Code,'
 	}
-	if(data['Vaccine information']=='No' || data['Vaccine information']=='N/A'){
+
+	if(data['Vaccine information']=='No'){
 		$(id + ' #vaccine').hide();
+	} else if(data['Vaccine information']=='N/A'){
+		$(id + ' #vaccine').attr('opacity',0.25);
+	} else {
+		implementedText+= ' Vaccine information,'
 	}
-	if(data['Bluetooth']=='No' || data['Bluetooth']=='N/A'){
+
+	if(data['Bluetooth']=='No'){
 		$(id + ' #bluetooth').hide();
+	} else if(data['Bluetooth']=='N/A'){
+		$(id + ' #vaccine').attr('opacity',0.25);
+	} else {
+		implementedText+= ' Bluetooth,'
 	}
-	if(data['Location Data']=='No' || data['Location Data']=='N/A'){
+
+	if(data['Location Data']=='No'){
 		$(id + ' #location').hide();
+	} else if(data['Location Data']=='N/A'){
+		$(id + ' #vaccine').attr('opacity',0.25);
+	} else {
+		implementedText+= ' Location Data,'
 	}
-	if(data['GAEN API'] =='No' || data['GAEN API']=='N/A'){
+
+	if(data['GAEN API'] =='No'){
 		$(id + ' #gaen').hide();
+	} else if(data['GAEN API']=='N/A'=='N/A'){
+		$(id + ' #vaccine').attr('opacity',0.25);
+	} else {
+		implementedText+= ' GAEN API,'
 	}
-	if(data['Decentralised']=='No' || data['Decentralised']=='N/A'){
+
+	if(data['Decentralised']=='No'){
 		$(id + ' #decentralised').hide();
+	} else if(data['Decentralised']=='N/A'){
+		$(id + ' #vaccine').attr('opacity',0.25);
+	} else {
+		implementedText+= ' Decentralised Technology,'
 	}
+
 	if(data['Centralised']=='Yes'){
 		$(id + ' #path16').css('fill','#FFD139');
+	} else {
+		implementedText+= ' Centralised Technology,'
 	}
+	console.log(implementedText)
+	$(id + ' .implementedtech').html(implementedText)
+	return implementedText
 }
 
 function createStatusChart(data,status){
@@ -61,6 +101,14 @@ function createStatusChart(data,status){
 	  .append("g")
 	    .attr("transform",
 	          "translate(" + margin.left + "," + margin.top + ")")
+
+
+  altText = createStatusAltText(data,status)
+
+  svg.append('title').text('Changes in vaccine passport policies').attr("id","contexttitle")
+	svg.append('desc').text(altText).attr("id","contextdesc")
+
+
 
 	console.log(data);
 	let x = d3.scaleTime()
@@ -134,14 +182,80 @@ function createStatusText(status){
 	status.forEach(function(s,i){
 		let text = statusText[s['Status']-1]
 		let html = `<li>
+			<div class="statuslistbox">
 			<p>${s['Date of status change']}</p>
 			<div class="statusblock"><img src="images/implementation_type_${s['Status']}.svg" width="30"/></div><div class="statustext"><p>${text}</p></div>
+			</div>
 		</li>`
 		$('#statuschanges').append(html);
 	});
 }
 
+function createStatusAltText(data,status){
+
+	let changeTextIntro = ['first','second','third','fourth','fifth','sixth','seventh','eigth','ninth']
+
+	let text = ''
+	if(status.length==0){
+		text = 'There were no changes in vaccine passport restrictions. '
+	} else if(status.length==1){
+		text = 'There was 1 change in vaccinepassport restriction. '
+	} else {
+		text = 'There were '+status.length+' changes in passport restriction. '
+	}
+
+	let max = d3.max(data,function(d){
+		return d.y
+	})
+
+	status.forEach(function(s,i){
+
+		let date = s
+
+		let statustext = 'The {{ index }} restriction change happened on {{ date }} when cases were {{ percentpeak }}% of the highest case rate seen and had {{ percentchange }} over the last 14 days. '
+		console.log(data)
+		console.log(date)
+		let caseRate = Math.round(getValueFromKey(date,data)*10)/10
+
+		let percentOfPeak =  Math.round(caseRate/max*100)
+
+		let deltaDate = new Date(date)
+		deltaDate.setDate(date.getDate()-14)
+
+		let deltaRate = getValueFromKey(deltaDate,data)
+
+		let percentChange = Math.round((caseRate/deltaRate -1)*100)
+		let change = 'not changed significantly'
+		if(percentChange>0){
+			change = 'risen by ' + percentChange + '%'
+		}
+		if(percentChange<0){
+			change = 'fallen by ' + (percentChange*-1) + '%'
+		}
+
+		finaltext = statustext.replace('{{ index }}',changeTextIntro[i]).replace('{{ date }}',date.toDateString()).replace('{{ percentpeak }}',percentOfPeak).replace('{{ percentchange }}',change)
+
+		text += finaltext
+	});
+	return text
+}
+
+function getValueFromKey(date,data){
+	let output = 0
+
+	data.forEach(function(d){
+		if(d.x.toDateString()==date.toDateString()){
+
+			output = d.y
+		}
+	})
+	return output
+}
+
 function populateCountryDrop(data){
+	data = data.sort(function(a,b){
+		return (a.country > b.country) ? 1 : -1
+	})
 	data.forEach(function(d){
 		let html = `<a class="dropdown-item" href="country.html?iso=${d['iso']}">${d['country']}</a>`
 		$('#countrydropdownitems').append(html)

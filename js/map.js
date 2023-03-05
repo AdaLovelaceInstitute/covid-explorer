@@ -5,7 +5,7 @@ function initMap(id,world,keyValues,colourBands,mouseover){
 
 function createMap(id,worldMap,keyValues,colourBands,mouseover){
 	console.log(worldMap);
-	const map = L.map(id,{zoomSnap: 0.5}).setView([20, 0], 1.5);
+	const map = L.map(id,{zoomSnap: 0.5}).setView([20, 0], 2);
 
 	/*const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 		maxZoom: 19,

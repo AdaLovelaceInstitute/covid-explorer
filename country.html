@@ -16,6 +16,26 @@
     </head>
     <body>
         <div class="loader"></div>
+        <div id="header" class="container-fluid">
+            <div class="maxwidthcontent">
+                <div class="row ">
+                    <div class="col-sm-4">
+                        <img id="logo" src="images/logo.png" alt="Ada Lovelace Institute Logo" width="100px">
+                    </div>
+                    <div class="col-sm-2">
+                        <p><a href="data.html" class="source">Explore Dashboard</a></p>
+                    </div>
+                    <div class="col-sm-2">
+                        <p><a href="about.html" class="source">About</a></p>
+                    </div>
+                </div>
+                <div id="title" class="row">
+                    <div class="col-sm-12">
+                        <h2>COVID-19 Data Explorer:<br />Policies, practices and technology</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div id="content" class="container-fluid maxwidthcontent">
             <div id="headerrow" class="row">
                 <p>Select another country</p>
@@ -31,7 +51,7 @@
             <div class="row">
                 <div id="implementation" class="col-md-4">
                     <div class="infobox">
-                        <p class="h7 sectionheader">Context of emergence of vaccine passports</p>
+                        <p class="h7 sectionheader">Emergence of vaccine passports</p>
                         <p class="p2">Data source: <a class="source" href="https://docs.google.com/spreadsheets/d/1uiaJOcfw3gwD4F4c3v9n8VKH41JlhxllD5-wxpdY7Oo/edit#gid=1390441830">Ada Lovelace Institute</a>, <a  class="source" href="https://ourworldindata.org/coronavirus">OurWorldInData</a></p>
                         <p class="p2">Date of Introduction: <span id="introdate"></span></p>
                         <div id="contextgraph"></div>
@@ -55,7 +75,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="infobox">
-                        <p class="h7 sectionheader">Implementation types of CTAs</p>
+                        <p class="h7 sectionheader">Technical infrastructure of contact tracing apps</p>
                         <p class="p2">Data source: <a class="source" href="https://docs.google.com/spreadsheets/d/1uiaJOcfw3gwD4F4c3v9n8VKH41JlhxllD5-wxpdY7Oo/edit#gid=1390441830">Ada Lovelace Institute</a></p>
                         <div id="ctaappicon"></div>
                         <div id="ctaapptext">
@@ -65,18 +85,21 @@
                             <p id="text_qr"><img  id="icon_qr_yes" src="images/Yes.svg" /><img id="icon_qr_no" src="images/No.svg" /> QR Codes</p>
                             <p id="text_bluetooth"><img  id="icon_bluetooth_yes" src="images/Yes.svg" /><img id="icon_bluetooth_no" src="images/No.svg" /> Bluetooth Standard</p>
                             <p id="text_location"><img  id="icon_location_yes" src="images/Yes.svg" /><img id="icon_location_no" src="images/No.svg" /> Location Data</p>
-                            <p id="text_gaen"><img  id="icon_gaen_yes" src="images/Yes.svg" /><img id="icon_gaen_no" src="images/No.svg" /> Gaen API</p>
+                            <p id="text_gaen"><img  id="icon_gaen_yes" src="images/Yes.svg" /><img id="icon_gaen_no" src="images/No.svg" /> GAEN API</p>
+                            <p id="text_datadecom"><img  id="icon_datadecom_yes" src="images/Yes.svg" /><img id="icon_datadecom_no" src="images/No.svg" /> Decommissioned and data deleted</p>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-12 infobox">
-                    <p class="h7 sectionheader">Government and social impact</p>
+                    <p class="h7 sectionheader">Governance and social impact</p>
                     <p class="p2">Data source: <a class="source" href="https://docs.google.com/spreadsheets/d/1uiaJOcfw3gwD4F4c3v9n8VKH41JlhxllD5-wxpdY7Oo/edit#gid=1390441830">Ada Lovelace Institute</a></p>
+                    <div id="entries">
                     <table id="qualtable" class="table">
                         <tr><th>Type</th><th>Text</th><th>Link</th></tr>
                     </table>
+                    </div>
                 </div>
             </div>
             <div class="row">
@@ -92,6 +115,7 @@
                     <p class="h7">Digital skill rank</p>
                     <p class="p2">Data source: <a class="source" href="https://dsgi.wiley.com/global-rankings/">Wiley</a></p>
                     <p id="digitalrank" class="p3"></p>
+                    <p class="p2">Vaccine supply information and digital skill score (0-10) and rank (among 134 countries) support analysis of the potential barriers to accessing vaccinations and novel COVID-19 technologies.</p>
                 </div>
             </div>
         </div>

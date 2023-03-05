@@ -1,18 +1,24 @@
 function init(){
+
+	$('#updatedate').html(updateDate)
+
 	$('#dataframe').hide();
 	$('#mapoverlay').hide()
+	$('#helpoverlay').hide()
 
 	$('.level2nav').on('mouseover',function(e){
 		$('#mapoverlay').hide()
 	})
 
-
+	$('.level2nav').on('mouseout',function(e){
+		$('#helpoverlay').hide()
+	})
 
 	$('#frame_2').hide()
 	$('#frame_3').hide()
 	$('#frame_4').hide()
 	let height = $(window).height()-32
-	console.log(height)
+
 	$('.level1nav').css({'height':(height+2)+'px'});
 	$('.level2nav').css({'height':height+'px'});
 	$('#frame3viz').css({'height':height+'px'});
@@ -48,10 +54,10 @@ function initDataFrame1(data,world){
 		let found = false
 		$('#mapoverlay').html('<p>Not in dataset</p>')
 		data.forEach(function(row){
-			console.log(row)
+
 			if(row['Country ISO3']==iso){
 				let html = `
-					<h6>${row['Country']}</h6>
+					<h6><a href="country.html?iso=${row['code']}">${row['Country']}</a></h6>
 					<p class="p4">Date of introduction</p>
 					<p class="p2">${row['VP Date of introduction']}</p>
 					<p class="p4">Name of international VP</p>
@@ -127,7 +133,7 @@ function updateKeyStatsFrame1(data){
 			keys.push(key)
 		}
 	})
-	console.log(keys)
+
 	let countNotlaunched = 0
 	data.forEach(function(d){
 		if(d['launched']=='No'){
@@ -140,17 +146,22 @@ function updateKeyStatsFrame1(data){
 }
 
 function viz1overlay(data){
+
 	console.log('overlay init')
+	console.log(data)
 	$('.countrypoint').on('mouseover',function(){
 		console.log('overlay')
 		let iso = $(this).attr('id')
 
 		let row = {}
+		console.log(iso)
 		data.forEach(function(d){
+
 			if(d['Country ISO3']==iso){
 				row = d
 			}
 		});
+		console.log(row)
 		let mouseX = event.pageX
     	let mouseY = event.pageY
     	if(mouseX>window.innerWidth-200){
@@ -293,14 +304,12 @@ function initDataFrame2(data,world){
 						country['value']++
 					}
 					if(!('country' in country)){
-						console.log(d)
 						keyValues[i][j]['country'] = d['Country name']
 					}
 				}
 			})
 		})
 	})
-	console.log(keyValues)
 
 	let colourBands = [{'value':'none','colour':'#bac8d4'},{'value':0,'colour':'#bac8d4'},{'value':1,'colour':'#ffe89c'},{'value':2,'colour':'#ffd139'},{'value':3,'colour':'#d3a522'},{'value':4,'colour':'#c43b3d'}];
 
@@ -309,11 +318,10 @@ function initDataFrame2(data,world){
 		let found = false
 		$('#mapoverlay').html('<p>Not in dataset</p>')
 		keyValues[17].forEach(function(d){
-			console.log(d);
 			if(d['key']==iso){
 				let html = `
-					<h6>${d['country']}</h6>
-					<p class="p4">Total Policy Changes</p>
+					<h6><a href="country.html?iso=${d['code']}">${d['country']}</a></h6>
+					<p class="p4">Total policy changes</p>
 					<p class="p2">${d['value']}</p>
 				`
 				$('#mapoverlay').html(html)
@@ -389,11 +397,10 @@ function updateKeyStatsFrame2(data){
 				return false
 			}
 		})
-		console.log(countrySet)
 		let policyCount = countrySet.length
 		counts[policyCount-1]++
 	})
-	console.log(keys)
+
 	$('#frame2allcountries').html(keys.length)
 	$('#frame21countries').html(counts[0])
 	$('#frame22countries').html(counts[1])
@@ -429,8 +436,7 @@ function populateDataFrame2Viz(data){
 
 			let mouseX = event.pageX
         	let mouseY = event.pageY
-        	console.log(mouseX)
-        	console.log(window.innerWidth-400)
+
         	if(mouseX>window.innerWidth-400){
         		mouseX = window.innerWidth-400
         	}
@@ -442,23 +448,22 @@ function populateDataFrame2Viz(data){
 			$('#mapoverlay').css('left', mouseX);
 
 			$('#mapoverlay').show()
+			console.log(d)
 			let html = `
                 <div>
-                	<h5>${d['country']}</h5>
+                	<h6><a href="country.html?iso=${d['code']}">${d['country']}</a></h6>
                     <ol id="statuschanges"></ol>
                 </div>
             `
 			$('#mapoverlay').html(html)
 
 			let filteredData = data.filter(function(row){
-				console.log(d)
 				if(row['Country ISO3'] == d['code']){
 					return true
 				} else {
 					return false
 				}
 			})
-			console.log(filteredData)
 			createStatusText(filteredData)
 
 		})
@@ -467,7 +472,7 @@ function populateDataFrame2Viz(data){
 	data.forEach(function(d){
 		let countryCode = d['Country ISO3'].toLowerCase()
 		let id=`#country_${countryCode}`
-		$(id).append('<div class="implementationbox"><span class="p2 implementationtext">'+d['Status']+'</span><img class="implementationimg" src="images/implementation_type_'+d['Status']+'.svg" width="30" ></div>')
+		$(id).append('<div class="implementationbox"><span class="p2 implementationtext">'+d['Status']+'</span><img class="implementationimg" src="images/implementation_type_'+d['Status']+'.svg" width="30" alt="'+statusText[d['Status']]+'"></div>')
 		
 	})
 }
@@ -514,7 +519,7 @@ function initDataFrame3(data,world){
 	$('#frame3protests').html(protests)
 
 	let colourBands = [{'value':'none','colour':'#bac8d4'},{'value':0,'colour':'#FFE89C'},{'value':1,'colour':'#C35414'}]
-	console.log(keyValues)
+
 	let map = initMap('frame3map',world,keyValues,colourBands)
 
 	map.setLayer(19)
@@ -565,7 +570,7 @@ function populateProtestTable(data){
 
 function initDataFrame4(data,world){
 	keyValues = [];
-	keys = ['App Launched','Vaccine information','QR code','Bluetooth','Location Data','GAEN API','Centralised','Decentralised','Decommissioned and relevant data have been deleted']
+	keys = ['App launched','Vaccine information','QR code','Bluetooth','Location data','GAEN API','Centralised','Decentralised','Decommissioned and relevant data have been deleted']
 
 	keys.forEach(function(key,i){
 		newValues = []
@@ -585,7 +590,27 @@ function initDataFrame4(data,world){
 
 	let colourBands = [{'value':'none','colour':'#bac8d4'},{'value':0,'colour':'#FFE89C'},{'value':1,'colour':'#C35414'}];
 
-	let map = initMap('frame4map',world,keyValues,colourBands);
+
+	let overlay = function(iso){
+
+		let found = false
+		$('#mapoverlay').html('<p>Not in dataset</p>')
+		data.forEach(function(row){
+
+			if(row['Country ISO3']==iso){
+				let html = `
+					<h6><a href="country.html?iso=${row['Country ISO3']}">${row['Country name']}</a></h6>
+				`
+				$('#mapoverlay').html(html)
+				found = true
+			}
+		})
+		if(found){$('#mapoverlay').show()} else {$('#mapoverlay').hide()}
+	}
+
+
+
+	let map = initMap('frame4map',world,keyValues,colourBands,overlay);
 
 	$('#framenav4').on('click',function(){
 		switchFrame(4,map)
@@ -649,18 +674,51 @@ function getKeyStats(data,key){
 }
 
 function populateFrame4Menu(keys,map){
+
+
+	let definitions = [
+		"Vaccine information: App has been expanded to include vaccine status information, functioning both as a contact tracing app and vaccine passport.",
+		"QR code: Users scan a QR code on entry to venues. If a user who tests positive for COVID-19 shares their results on the app, those users who have scanned the same QR code are notified.",
+		"Bluetooth: By turning on Bluetooth, users allow the app to track real-time and historical interactions with other users, and receive an alert if they come into contact with a user who tests positive for COVID-19.",
+		"Location data: App uses mobile devices’ location (GPS) to identify contacts who have been in the same locations and test positive for COVID-19.",
+		"GAEN API: API systems built by Apple and Google.",
+		"Centralised : The data is generated, stored and processed on a central server operated by public health authorities. Authorities score users' risk and decide which affected users to inform.",
+		"Decentralised :The data is generated, stored and processed on users' mobile devices, and transferred to a backend server, which notifies contacts when a user tests positive for COVID-19. Health authorities do not have access to the server.",
+		"Decommissioned: App has been retired and user data deleted."
+	]
+
+
 	keys.forEach(function(key,i){
-		let html = `<div><p><input type="radio" name="frame4layer" value="${i}" class="frame4nav"> ${key}</p></div>`
+		let html = `<div><p><input type="radio" name="frame4layer" value="${i}" class="frame4nav"> ${key} <img id="help${i}" src="images/question-circle.svg" alt="help"></p></div>`
 		if(i==0){
 			html = `<div><p><input type="radio" name="frame4layer" value="${i}" class="frame4nav" checked> ${key}</p></div>`
 		}
 		
 		$('#frame4layers').append(html)
+
+		$('#help'+i).on('mouseover',function(event){
+			console.log('over')
+			let mouseX = event.pageX
+	    	let mouseY = event.pageY
+
+	    	if(mouseY>window.innerHeight-200){
+	    		mouseY = window.innerHeight-200
+	    	}
+
+
+	    	console.log(mouseX)
+	    	console.log(mouseY)
+	    	let text = definitions[i-1]
+			$('#helpoverlay').css('top', mouseY);
+			$('#helpoverlay').css('left', mouseX);
+			$('#helpoverlay').html(text)
+			$('#helpoverlay').show()
+		});
 	});
 
 	$('.frame4nav').on('click',function(){
 		let layer = $('input[name="frame4layer"]:checked').val()
-		console.log(layer);
+
 		map.setLayer(layer)
 	});
 }
@@ -674,7 +732,28 @@ function populateFrame4Viz(data){
 			</div>`
 		let continent = d['Continent'].toLowerCase().replace(' ','_')
 		$('#frame4viz_'+continent).append(html);
-		setIcon('#app_'+d['Country ISO3'],d)
+		let text = setIcon('#app_'+d['Country ISO3'],d)
+		$('#app_'+d['Country ISO3']).on('mouseover',function(){
+			let mouseX = event.pageX
+        	let mouseY = event.pageY
+
+        	if(mouseX>window.innerWidth-100){
+        		mouseX = window.innerWidth-100
+        	}
+        	if(mouseY>window.innerHeight-100){
+        		mouseY = window.innerHeight-100
+        	}
+
+			$('#mapoverlay').css('top', mouseY);
+			$('#mapoverlay').css('left', mouseX);
+
+			$('#mapoverlay').html(text)	
+
+			$('#mapoverlay').show()
+			
+					
+		});
+		
 	});
 }
 

@@ -1,6 +1,6 @@
 function init(){
 	let iso = getCountry()
-	console.log(iso)
+
 	$('#content').hide()
 	loadCountryData(iso);
 }
@@ -19,8 +19,7 @@ function getCountry(){
 function populateCountryMenu(data){
 	$('.loader').hide()
 	$('#content').show()
-	console.log('menu')
-	console.log(data);
+
 	let dropdownOptions = []
 	let isoCodes2 = []
 	data.forEach(function(d){
@@ -30,13 +29,13 @@ function populateCountryMenu(data){
 		}
 		
 	});
-	console.log(dropdownOptions)
+
 	populateCountryDrop(dropdownOptions)
 }
 
 
 function initPage(data){
-	console.log(data);
+
 	$('#countryname').html(data.vaccine_passport[0]['Country'])
 	createContextGraph(data)
 	processStatusChart(data)
@@ -47,21 +46,21 @@ function initPage(data){
 }
 
 function populateVaccineSupply(data){
-	console.log(data);
+
 	if(data.length==0){
-		console.log('no vaccine data')
+
 		$('#vaccine_supply').html('<p>WHO vaccine tracker does not supply enough details to break down vaccine supply by month</p>')
 	} else {
 		processData = []
 		total = 0
 		data.forEach(function(d){
-			console.log(d)
+
 			date = d3.timeParse("%Y-%m-%d")(d['Report Date'])
 			total = total + d['Number of doses']/d['Population']
 			value = total
 			processData.push({'date':date,'value':value})
 		})
-		console.log(processData)
+
 		createSupplyGraph(processData)
 	}
 }
@@ -97,14 +96,14 @@ function createSupplyGraph(data){
     svg.append("g")
       .call(d3.axisLeft(y).ticks(5));
 
-      console.log(data)
+
     svg.append("path")
       .datum(data)
       .attr("fill", "none")
       .attr("stroke", '#BAC8D4')
       .attr("stroke-width", 3)
       .attr("d", d3.line()
-        .x(function(d) { console.log(d);return x(d.date) })
+        .x(function(d) {return x(d.date) })
         .y(function(d) { return y(d.value*100) })
         )
 
@@ -130,63 +129,105 @@ function createAppIcon(data){
 
 function createAppText(data){
 
-	if(data['QR code']=='No' || data['QR code']=='N/A'){
+	if(data['QR code']=='No'){
 		$('#text_qr').addClass('apptextno')
 		$('#icon_qr_yes').hide()
-	} else {
+	} else if(data['QR code']=='Yes'){
 		$('#icon_qr_no').hide()
+	} else {
+		$('#icon_qr_yes').hide()
+		$('#icon_qr_no').css('opacity',0)
+		$('#text_qr').addClass('apptextno')
 	}
 
-	if(data['Vaccine information']=='No' || data['Vaccine information']=='N/A'){
+	if(data['Vaccine information']=='No'){
 		$('#text_vaccine').addClass('apptextno')
 		$('#icon_vaccine_yes').hide()
+	} else if(data['Vaccine information']=='Yes'){
+		$('#icon_vaccine_no').hide()
 	} else {
 		$('#icon_vaccine_no').hide()
+		$('#text_vaccine').addClass('apptextno')
+		$('#icon_vaccine_yes').css('opacity',0)
 	}
 
-	if(data['Bluetooth']=='No' || data['Bluetooth']=='N/A'){
+	if(data['Bluetooth']=='No'){
 		$('#text_bluetooth').addClass('apptextno')
 		$('#icon_bluetooth_yes').hide()
-	} else {
+	} else if(data['Bluetooth']=='Yes'){
 		$('#icon_bluetooth_no').hide()
+	} else {
+		$('#text_bluetooth').addClass('apptextno')
+		$('#icon_bluetooth_yes').hide()
+		$('#icon_bluetooth_no').css('opacity',0)
 	}
 
-	if(data['Location Data']=='No' || data['Location Data']=='N/A'){
+	if(data['Location Data']=='No'){
 		$('#text_location').addClass('apptextno')
 		$('#icon_location_yes').hide()
-	} else {
+	} else if(data['Location Data']=='Yes') {
 		$('#icon_location_no').hide()
+	} else {
+		$('#text_location').addClass('apptextno')
+		$('#icon_location_yes').hide()
+		$('#icon_location_no').css('opacity',0)
 	}
 
-	if(data['GAEN API'] =='No' || data['GAEN API']){
+	if(data['GAEN API'] =='No'){
 		$('#text_gaen').addClass('apptextno')
 		$('#icon_gaen_yes').hide()
-	} else {
+	} else if(data['GAEN API'] =='Yes'){
 		$('#icon_gaen_no').hide()
+	} else {
+		$('#text_gaen').addClass('apptextno')
+		$('#icon_gaen_yes').hide()
+		$('#icon_gaen_no').css('opacity',0)
 	}
 
-	if(data['Decentralised']=='No' || data['Decentralised']=='N/A'){
+	if(data['Decentralised']=='No'){
 		$('#text_decentralised').addClass('apptextno')
 		$('#icon_decentralised_yes').hide()
-	} else {
+	} else if(data['Decentralised']=='Yes'){
 		$('#icon_decentralised_no').hide()
+	} else {
+		$('#text_decentralised').addClass('apptextno')
+		$('#icon_decentralised_yes').hide()
+		$('#icon_decentralised_no').css('opacity',0)
 	}
 
-	if(data['Centralised']=='No' || data['Centralised']=='N/A'){
+	if(data['Centralised']=='No'){
 		$('#text_centralised').addClass('apptextno')
 		$('#icon_centralised_yes').hide()
-	} else {
+	} else if(data['Centralised']=='Yes'){
 		$('#icon_centralised_no').hide()
+	} else {
+		$('#text_centralised').addClass('apptextno')
+		$('#icon_centralised_yes').hide()
+		$('#icon_centralised_no').css('opacity',0)
+	}
+
+	if(data['data_deleted']=='No'){
+		$('#text_datadecom').addClass('apptextno')
+		$('#icon_datadecom_yes').hide()
+	} else if(data['data_deleted']=='Yes'){
+		$('#icon_datadecom_no').hide()
+	} else {
+		$('#text_datadecom').addClass('apptextno')
+		$('#icon_datadecom_yes').hide()
+		$('#icon_datadecom_no').css('opacity',0)
 	}
 }
 
 function populateQualData(data){
-	console.log(data);
+
 	data.forEach(function(d){
-		console.log(d);
+
 		let html = `<tr><td><p>${d['Type']}</p></td><td><p>${d['Text']}</p></td><td><p><a href="${d['Link']}" target="_blank">Read More</a></p></td></tr>`
 		$('#qualtable').append(html)
 	});
+	if(data.length==0){
+		$('#entries').html('<p>No entries in database</p>')
+	}
 }
 
 function populateDigitalSkills(data){
@@ -215,13 +256,37 @@ function createContextGraph(data){
 }
 
 function createImplmentationGraph(data,implementation){
+
 	let margin = {top: 10, right: 45, bottom: 30, left: 60},
     width = $('#implementation').width() - margin.left - margin.right,
     height = 300 - margin.top - margin.bottom;
 
+
+	let x = d3.scaleTime()
+      .domain([d3.timeParse("%Y-%m-%d")('2021-01-01'),d3.timeParse("%Y-%m-%d")('2021-12-31')])
+      .range([ 0, width ]);
+
+
+  let dateString = implementation['VP Date of introduction']
+  let implDate = d3.timeParse("%Y-%m-%d")(dateString)
+  let implX = x(implDate)
+
+
+
+
+
 	// append the svg object to the body of the page
-	let svg = d3.select("#contextgraph")
+
+	let svgTop = d3.select("#contextgraph")
 	  .append("svg")
+
+
+	altText = altTextForImplementationGraph(implDate,data);
+	console.log(altText)
+
+	
+
+	let svg = svgTop
 	    .attr("width", width + margin.left + margin.right)
 	    .attr("height", height + margin.top + margin.bottom)
 	  .append("g")
@@ -229,12 +294,15 @@ function createImplmentationGraph(data,implementation){
 	          "translate(" + margin.left + "," + margin.top + ")")
 
 
-	let x = d3.scaleTime()
-      .domain([d3.timeParse("%Y-%m-%d")('2021-01-01'),d3.timeParse("%Y-%m-%d")('2021-12-31')])
-      .range([ 0, width ]);
+	//svg.attr('aria-labelledby',"contexttitle contextdesc")
+
+	svg.append('title').text('Vaccine Passport Implemntation in the context of case data and vaccination rates').attr("id","contexttitle")
+	svg.append('desc').text(altText).attr("id","contextdesc")
+
     svg.append("g")
       .attr("transform", "translate(0," + height + ")")
       .call(d3.axisBottom(x).ticks(6))
+      .attr('aria-hidden',"true")
 
 
     // Add Y axis
@@ -243,7 +311,8 @@ function createImplmentationGraph(data,implementation){
       .range([ height, 0 ]);
 
     svg.append("g")
-      .call(d3.axisLeft(y).ticks(5));
+      .call(d3.axisLeft(y).ticks(5))
+       .attr('aria-hidden',"true")
 
     let y2 = d3.scaleLinear()
       .domain([0, 100])
@@ -251,7 +320,8 @@ function createImplmentationGraph(data,implementation){
 
     svg.append("g")
    	  .attr('transform', 'translate(' + (width) + ', 0)')
-      .call(d3.axisRight(y2));
+      .call(d3.axisRight(y2))
+      .attr('aria-hidden',"true")
 
 
     svg.append("path")
@@ -296,9 +366,7 @@ function createImplmentationGraph(data,implementation){
         .y(function(d) { return y2(d.y) })
         )
 
-    let dateString = implementation['VP Date of introduction']
-    let implDate = d3.timeParse("%Y-%m-%d")(dateString)
-    let implX = x(implDate)
+
 
     svg.append("line")
     	.attr('x1',implX)
@@ -315,7 +383,8 @@ function createImplmentationGraph(data,implementation){
 	    .attr("x", -40)
 	    .style('font-size','10px')
 	    .attr("transform", "rotate(-90)")
-	    .text("Cases per million (7 day average)");
+	    .text("Cases per million (7 day average)")
+	    .attr('aria-hidden',"true")
 
 	 	svg.append("text")
 	    .attr("class", "y label")
@@ -324,7 +393,44 @@ function createImplmentationGraph(data,implementation){
 	    .attr("x", -70)
 	    .style('font-size','10px')
 	    .attr("transform", "rotate(-90)")
-	    .text("Vaccination rate (%)");
+	    .text("Vaccination rate (%)")
+	    .attr('aria-hidden',"true")
+
+}
+
+function altTextForImplementationGraph(date,data){
+	let text = `A graph showing cases numbers and vaccination rates for 2021 and the date of vaccine passport introduction on {{ imp_date }}.
+	At the time of introduction the single dose vaccination rate was {{ vaccinationrate }}% with the fully vaccinated rate being {{ fullyvaccinated }}%.
+	The case rate per million was {{ caserate }}. This is {{ percentofpeak }}% of the 2021 peak.
+	Compared to 14 days before the case rate had {{ change }}.`
+
+	let imp_date = date.toDateString()
+	let vaccinationRate = Math.round(getValueFromKey(date,data[2].data) )
+	let fullyVaccinated = Math.round(getValueFromKey(date,data[3].data))
+	let caseRate = Math.round(getValueFromKey(date,data[1].data)*10)/10
+	let max = d3.max(data[1].data,function(d){
+		return d.y
+	})
+
+	let percentOfPeak =  Math.round(caseRate/max*100)
+
+	let deltaDate = new Date(date)
+	deltaDate.setDate(date.getDate()-14)
+
+	let deltaRate = getValueFromKey(deltaDate,data[1].data)
+
+	let percentChange = Math.round((caseRate/deltaRate -1)*100)
+	let change = 'not changed significantly'
+	if(percentChange>0){
+		change = 'risen by ' + percentChange + '%'
+	}
+	if(percentChange<0){
+		change = 'fallen by ' + (percentChange*-1) + '%'
+	}
+
+	text = text.replace('{{ imp_date }}',imp_date).replace('{{ vaccinationrate }}',vaccinationRate).replace('{{ fullyvaccinated }}',fullyVaccinated).replace('{{ caserate }}',caseRate).replace('{{ percentofpeak }}',percentOfPeak).replace('{{ change }}',change)
+
+	return text
 }
 
 function processStatusChart(data){
