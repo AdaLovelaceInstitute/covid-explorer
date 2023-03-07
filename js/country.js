@@ -79,6 +79,13 @@ function createSupplyGraph(data){
 	    .attr("transform",
 	          "translate(" + margin.left + "," + margin.top + ")")
 
+	svg.append('title').text('A graph showing Vaccine supply over time').attr("id","contexttitle")
+	let length = data.length
+	let maxValue = Math.round(data[length-1].value*10)/10;
+
+	let altText = 'In total the vaccine supply was '+ maxValue + ' vaccines per person.'
+	svg.append('desc').text(altText).attr("id","contextdesc")
+
 
 	let x = d3.scaleTime()
       .domain(d3.extent(data, function(d) { return d.date; }))
@@ -86,15 +93,17 @@ function createSupplyGraph(data){
     svg.append("g")
       .attr("transform", "translate(0," + height + ")")
       .call(d3.axisBottom(x).ticks(6))
+      .attr('aria-hidden',"true")
 
-      let length = data.length
+      
     // Add Y axis
     let y = d3.scaleLinear()
       .domain([0, data[length-1].value*100])
       .range([ height, 0 ]);
 
     svg.append("g")
-      .call(d3.axisLeft(y).ticks(5));
+      .call(d3.axisLeft(y).ticks(5))
+       .attr('aria-hidden',"true")
 
 
     svg.append("path")
@@ -117,7 +126,8 @@ function createSupplyGraph(data){
 	    .attr("x", -40)
 	    .style('font-size','10px')
 	    .attr("transform", "rotate(-90)")
-	    .text("Vaccine supply as percent of population (%)");
+	    .text("Vaccine supply as percent of population (%)")
+	    .attr('aria-hidden',"true")
 
 }
 
@@ -403,33 +413,35 @@ function altTextForImplementationGraph(date,data){
 	At the time of introduction the single dose vaccination rate was {{ vaccinationrate }}% with the fully vaccinated rate being {{ fullyvaccinated }}%.
 	The case rate per million was {{ caserate }}. This is {{ percentofpeak }}% of the 2021 peak.
 	Compared to 14 days before the case rate had {{ change }}.`
+	if(date==null){
+		text = 'A graph showing cases numbers and vaccination rates for 2021. There was no digital vaccine passport implemented.'
+	} else {
+		let imp_date = date.toDateString()
+		let vaccinationRate = Math.round(getValueFromKey(date,data[2].data) )
+		let fullyVaccinated = Math.round(getValueFromKey(date,data[3].data))
+		let caseRate = Math.round(getValueFromKey(date,data[1].data)*10)/10
+		let max = d3.max(data[1].data,function(d){
+			return d.y
+		})
 
-	let imp_date = date.toDateString()
-	let vaccinationRate = Math.round(getValueFromKey(date,data[2].data) )
-	let fullyVaccinated = Math.round(getValueFromKey(date,data[3].data))
-	let caseRate = Math.round(getValueFromKey(date,data[1].data)*10)/10
-	let max = d3.max(data[1].data,function(d){
-		return d.y
-	})
+		let percentOfPeak =  Math.round(caseRate/max*100)
 
-	let percentOfPeak =  Math.round(caseRate/max*100)
+		let deltaDate = new Date(date)
+		deltaDate.setDate(date.getDate()-14)
 
-	let deltaDate = new Date(date)
-	deltaDate.setDate(date.getDate()-14)
+		let deltaRate = getValueFromKey(deltaDate,data[1].data)
 
-	let deltaRate = getValueFromKey(deltaDate,data[1].data)
+		let percentChange = Math.round((caseRate/deltaRate -1)*100)
+		let change = 'not changed significantly'
+		if(percentChange>0){
+			change = 'risen by ' + percentChange + '%'
+		}
+		if(percentChange<0){
+			change = 'fallen by ' + (percentChange*-1) + '%'
+		}
 
-	let percentChange = Math.round((caseRate/deltaRate -1)*100)
-	let change = 'not changed significantly'
-	if(percentChange>0){
-		change = 'risen by ' + percentChange + '%'
+		text = text.replace('{{ imp_date }}',imp_date).replace('{{ vaccinationrate }}',vaccinationRate).replace('{{ fullyvaccinated }}',fullyVaccinated).replace('{{ caserate }}',caseRate).replace('{{ percentofpeak }}',percentOfPeak).replace('{{ change }}',change)
 	}
-	if(percentChange<0){
-		change = 'fallen by ' + (percentChange*-1) + '%'
-	}
-
-	text = text.replace('{{ imp_date }}',imp_date).replace('{{ vaccinationrate }}',vaccinationRate).replace('{{ fullyvaccinated }}',fullyVaccinated).replace('{{ caserate }}',caseRate).replace('{{ percentofpeak }}',percentOfPeak).replace('{{ change }}',change)
-
 	return text
 }
 

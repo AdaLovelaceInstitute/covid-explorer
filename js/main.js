@@ -596,10 +596,11 @@ function initDataFrame4(data,world){
 		let found = false
 		$('#mapoverlay').html('<p>Not in dataset</p>')
 		data.forEach(function(row){
-
+			let text = setIcon('#apps',row)
 			if(row['Country ISO3']==iso){
 				let html = `
 					<h6><a href="country.html?iso=${row['Country ISO3']}">${row['Country name']}</a></h6>
+					<p>${text}</p>
 				`
 				$('#mapoverlay').html(html)
 				found = true

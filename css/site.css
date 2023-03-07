@@ -593,3 +593,14 @@ input[type=range] {
 h6 a {
 	color: #000000;
 }
+
+#mobilemessage {
+	padding: 16px 32px 8px 32px;
+	display: none;
+}
+
+@media (max-width:700px) {
+	#mobilemessage {
+		display: block;
+	}
+}

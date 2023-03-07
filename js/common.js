@@ -41,23 +41,23 @@ function setIcon(id,data){
 	if(data['Bluetooth']=='No'){
 		$(id + ' #bluetooth').hide();
 	} else if(data['Bluetooth']=='N/A'){
-		$(id + ' #vaccine').attr('opacity',0.25);
+		$(id + ' #bluetooth').attr('opacity',0.25);
 	} else {
 		implementedText+= ' Bluetooth,'
 	}
 
-	if(data['Location Data']=='No'){
+	if(data['Location data']=='No'){
 		$(id + ' #location').hide();
-	} else if(data['Location Data']=='N/A'){
-		$(id + ' #vaccine').attr('opacity',0.25);
+	} else if(data['Location data']=='N/A'){
+		$(id + ' #location').attr('opacity',0.25);
 	} else {
 		implementedText+= ' Location Data,'
 	}
 
 	if(data['GAEN API'] =='No'){
 		$(id + ' #gaen').hide();
-	} else if(data['GAEN API']=='N/A'=='N/A'){
-		$(id + ' #vaccine').attr('opacity',0.25);
+	} else if(data['GAEN API']=='N/A'){
+		$(id + ' #gaen').attr('opacity',0.25);
 	} else {
 		implementedText+= ' GAEN API,'
 	}
@@ -65,14 +65,13 @@ function setIcon(id,data){
 	if(data['Decentralised']=='No'){
 		$(id + ' #decentralised').hide();
 	} else if(data['Decentralised']=='N/A'){
-		$(id + ' #vaccine').attr('opacity',0.25);
+		$(id + ' #decentralised').attr('opacity',0.25);
 	} else {
 		implementedText+= ' Decentralised Technology,'
 	}
 
 	if(data['Centralised']=='Yes'){
 		$(id + ' #path16').css('fill','#FFD139');
-	} else {
 		implementedText+= ' Centralised Technology,'
 	}
 	console.log(implementedText)
@@ -117,6 +116,7 @@ function createStatusChart(data,status){
     svg.append("g")
       .attr("transform", "translate(0," + height + ")")
       .call(d3.axisBottom(x).ticks(4))
+      .attr('aria-hidden',"true")
 
 
     // Add Y axis
@@ -125,7 +125,8 @@ function createStatusChart(data,status){
       .range([ height, 0 ]);
 
     svg.append("g")
-      .call(d3.axisLeft(y).ticks(5));
+      .call(d3.axisLeft(y).ticks(5))
+      .attr('aria-hidden',"true")
 
     svg.append("path")
       .datum(data)
@@ -167,6 +168,7 @@ function createStatusChart(data,status){
     		return (i+1)
     	})
     	.attr('dx',-5)
+    	.attr('aria-hidden',"true")
 
      svg.append("text")
 	    .attr("class", "y label")
@@ -175,7 +177,8 @@ function createStatusChart(data,status){
 	    .attr("x", -40)
 	    .style('font-size','10px')
 	    .attr("transform", "rotate(-90)")
-	    .text("Cases per million (7 day average)");
+	    .text("Cases per million (7 day average)")
+	    .attr('aria-hidden',"true")
 }
 
 function createStatusText(status){
