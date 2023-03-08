@@ -57,7 +57,7 @@ function initDataFrame1(data,world){
 
 			if(row['Country ISO3']==iso){
 				let html = `
-					<h6><a href="country.html?iso=${row['code']}">${row['Country']}</a></h6>
+					<h6><a href="country.html?iso=${row['Country ISO3']}">${row['Country']}</a></h6>
 					<p class="p4">Date of introduction</p>
 					<p class="p2">${row['VP Date of introduction']}</p>
 					<p class="p4">Name of international VP</p>
@@ -520,7 +520,25 @@ function initDataFrame3(data,world){
 
 	let colourBands = [{'value':'none','colour':'#bac8d4'},{'value':0,'colour':'#FFE89C'},{'value':1,'colour':'#C35414'}]
 
-	let map = initMap('frame3map',world,keyValues,colourBands)
+	let overlay = function(iso){
+
+		let found = false
+		$('#mapoverlay').html('<p>Not in dataset</p>')
+		data.forEach(function(d){
+			if(d['Country ISO3']==iso){
+				let html = `
+					<h6><a href="country.html?iso=${d['Country ISO3']}">${d['Country']}</a></h6>
+				`
+				$('#mapoverlay').html(html)
+				found = true
+			}
+		})
+		if(found){$('#mapoverlay').show()} else {$('#mapoverlay').hide()}
+	}
+
+
+
+	let map = initMap('frame3map',world,keyValues,colourBands,overlay)
 
 	map.setLayer(19)
 
