@@ -75,7 +75,7 @@ function createSupplyGraph(data){
 	let svgTop = d3.select("#vaccine_supply")
 	  .append("svg")
 
-	svgTop.attr('aria-labelledby',"contexttitle contextdesc")
+	svgTop.attr('aria-labelledby',"supplytitle supplydesc")
 
 	let svg = svgTop
 	    .attr("width", width + margin.left + margin.right)
@@ -84,12 +84,12 @@ function createSupplyGraph(data){
 	    .attr("transform",
 	          "translate(" + margin.left + "," + margin.top + ")")
 
-	svgTop.append('title').text('A graph showing Vaccine supply over time').attr("id","contexttitle")
+	svgTop.append('title').text('A graph showing Vaccine supply over time').attr("id","supplytitle")
 	let length = data.length
 	let maxValue = Math.round(data[length-1].value*10)/10;
 
 	let altText = 'In total the vaccine supply was '+ maxValue + ' vaccines per person.'
-	svgTop.append('desc').text(altText).attr("id","contextdesc")
+	svgTop.append('desc').text(altText).attr("id","supplydesc")
 
 
 	let x = d3.scaleTime()

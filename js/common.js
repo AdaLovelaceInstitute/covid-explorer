@@ -103,12 +103,12 @@ function createStatusChart(data,status){
 	    .attr("transform",
 	          "translate(" + margin.left + "," + margin.top + ")")
 
-	svgTop.attr('aria-labelledby',"contexttitle contextdesc")
+	svgTop.attr('aria-labelledby',"statustitle statusdesc")
 
   altText = createStatusAltText(data,status)
 
-  svgTop.append('title').text('Changes in vaccine passport policies').attr("id","contexttitle")
-	svgTop.append('desc').text(altText).attr("id","contextdesc")
+  svgTop.append('title').text('Changes in vaccine passport policies').attr("id","statustitle")
+	svgTop.append('desc').text(altText).attr("id","statusdesc")
 
 
 
