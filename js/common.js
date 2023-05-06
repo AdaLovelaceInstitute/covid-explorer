@@ -92,20 +92,23 @@ function createStatusChart(data,status){
     width =  divWidth - margin.left - margin.right,
     height = 300 - margin.top - margin.bottom;
 
-	// append the svg object to the body of the page
-	let svg = d3.select("#statusgraph")
+	let svgTop = d3.select("#statusgraph")
 	  .append("svg")
+
+
+	let svg = svgTop
 	    .attr("width", width + margin.left + margin.right)
 	    .attr("height", height + margin.top + margin.bottom)
 	  .append("g")
 	    .attr("transform",
 	          "translate(" + margin.left + "," + margin.top + ")")
 
+	svgTop.attr('aria-labelledby',"contexttitle contextdesc")
 
   altText = createStatusAltText(data,status)
 
-  svg.append('title').text('Changes in vaccine passport policies').attr("id","contexttitle")
-	svg.append('desc').text(altText).attr("id","contextdesc")
+  svgTop.append('title').text('Changes in vaccine passport policies').attr("id","contexttitle")
+	svgTop.append('desc').text(altText).attr("id","contextdesc")
 
 
 
@@ -260,7 +263,7 @@ function populateCountryDrop(data){
 		return (a.country > b.country) ? 1 : -1
 	})
 	data.forEach(function(d){
-		let html = `<a class="dropdown-item" href="country.html?iso=${d['iso']}">${d['country']}</a>`
+		let html = `<a class="dropdown-item" href="country.html?iso=${d['iso']}" target="_blank">${d['country']}</a>`
 		$('#countrydropdownitems').append(html)
 	});
 }

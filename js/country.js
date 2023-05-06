@@ -71,20 +71,25 @@ function createSupplyGraph(data){
     height = 300 - margin.top - margin.bottom;
 
 	// append the svg object to the body of the page
-	let svg = d3.select("#vaccine_supply")
+
+	let svgTop = d3.select("#vaccine_supply")
 	  .append("svg")
+
+	svgTop.attr('aria-labelledby',"contexttitle contextdesc")
+
+	let svg = svgTop
 	    .attr("width", width + margin.left + margin.right)
 	    .attr("height", height + margin.top + margin.bottom)
 	  .append("g")
 	    .attr("transform",
 	          "translate(" + margin.left + "," + margin.top + ")")
 
-	svg.append('title').text('A graph showing Vaccine supply over time').attr("id","contexttitle")
+	svgTop.append('title').text('A graph showing Vaccine supply over time').attr("id","contexttitle")
 	let length = data.length
 	let maxValue = Math.round(data[length-1].value*10)/10;
 
 	let altText = 'In total the vaccine supply was '+ maxValue + ' vaccines per person.'
-	svg.append('desc').text(altText).attr("id","contextdesc")
+	svgTop.append('desc').text(altText).attr("id","contextdesc")
 
 
 	let x = d3.scaleTime()
@@ -304,10 +309,10 @@ function createImplmentationGraph(data,implementation){
 	          "translate(" + margin.left + "," + margin.top + ")")
 
 
-	//svg.attr('aria-labelledby',"contexttitle contextdesc")
+	svgTop.attr('aria-labelledby',"contexttitle contextdesc")
 
-	svg.append('title').text('Vaccine Passport Implemntation in the context of case data and vaccination rates').attr("id","contexttitle")
-	svg.append('desc').text(altText).attr("id","contextdesc")
+	svgTop.append('title').text('Vaccine Passport Implemntation in the context of case data and vaccination rates').attr("id","contexttitle")
+	svgTop.append('desc').text(altText).attr("id","contextdesc")
 
     svg.append("g")
       .attr("transform", "translate(0," + height + ")")
