@@ -43,7 +43,7 @@ function createMap(id,worldMap,keyValues,colourBands,mouseover){
 			weight: 1,
 			opacity: 1,
 			color: 'white',
-			fillOpacity: 0.7,
+			fillOpacity: 0.9,
 			fillColor: getColour(feature.properties['adm0_a3'],keyValues[0])
 		};
 	}

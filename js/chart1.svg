@@ -1,4 +1,4 @@
-let chart1 = `<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
    viewBox="0 0 787.83 964.21"
    version="1.1"
@@ -1272,4 +1272,3 @@ let chart1 = `<?xml version="1.0" encoding="UTF-8" standalone="no"?>
     </g>
   </g>
 </svg>
-`

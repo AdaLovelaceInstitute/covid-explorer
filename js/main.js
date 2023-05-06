@@ -1,6 +1,6 @@
 function init(){
 
-	$('#updatedate').html(updateDate)
+	$('.updatedate').html(updateDate)
 
 	$('#dataframe').hide();
 	$('#mapoverlay').hide()
@@ -57,7 +57,7 @@ function initDataFrame1(data,world){
 
 			if(row['Country ISO3']==iso){
 				let html = `
-					<h6><a href="country.html?iso=${row['Country ISO3']}">${row['Country']}</a></h6>
+					<h6><a href="country.html?iso=${row['Country ISO3']}" target="_blank">${row['Country']}</a></h6>
 					<p class="p4">Date of introduction</p>
 					<p class="p2">${row['VP Date of introduction']}</p>
 					<p class="p4">Name of international VP</p>
@@ -320,7 +320,7 @@ function initDataFrame2(data,world){
 		keyValues[17].forEach(function(d){
 			if(d['key']==iso){
 				let html = `
-					<h6><a href="country.html?iso=${d['code']}">${d['country']}</a></h6>
+					<h6><a href="country.html?iso=${d['key']}" target="_blank">${d['country']}</a></h6>
 					<p class="p4">Total policy changes</p>
 					<p class="p2">${d['value']}</p>
 				`
@@ -451,7 +451,7 @@ function populateDataFrame2Viz(data){
 			console.log(d)
 			let html = `
                 <div>
-                	<h6><a href="country.html?iso=${d['code']}">${d['country']}</a></h6>
+                	<h6><a href="country.html?iso=${d['code']}" target="_blank">${d['country']}</a></h6>
                     <ol id="statuschanges"></ol>
                 </div>
             `
@@ -527,7 +527,7 @@ function initDataFrame3(data,world){
 		data.forEach(function(d){
 			if(d['Country ISO3']==iso){
 				let html = `
-					<h6><a href="country.html?iso=${d['Country ISO3']}">${d['Country']}</a></h6>
+					<h6><a href="country.html?iso=${d['Country ISO3']}" target="_blank">${d['Country']}</a></h6>
 				`
 				$('#mapoverlay').html(html)
 				found = true
@@ -617,7 +617,7 @@ function initDataFrame4(data,world){
 			let text = setIcon('#apps',row)
 			if(row['Country ISO3']==iso){
 				let html = `
-					<h6><a href="country.html?iso=${row['Country ISO3']}">${row['Country name']}</a></h6>
+					<h6><a href="country.html?iso=${row['Country ISO3']}" target="_blank">${row['Country name']}</a></h6>
 					<p>${text}</p>
 				`
 				$('#mapoverlay').html(html)
@@ -664,7 +664,7 @@ function initDataFrame4(data,world){
 }
 
 function populateFrame4KeyStats(data){
-	let total = data.length
+	let total = getKeyStats(data,'App launched');
 	let count = getKeyStats(data,'Centralised');
 	$('#frame4centralised').html(count+'/'+total);
 	count = getKeyStats(data,'Decentralised');
@@ -701,8 +701,8 @@ function populateFrame4Menu(keys,map){
 		"Bluetooth: By turning on Bluetooth, users allow the app to track real-time and historical interactions with other users, and receive an alert if they come into contact with a user who tests positive for COVID-19.",
 		"Location data: App uses mobile devices’ location (GPS) to identify contacts who have been in the same locations and test positive for COVID-19.",
 		"GAEN API: API systems built by Apple and Google.",
-		"Centralised : The data is generated, stored and processed on a central server operated by public health authorities. Authorities score users' risk and decide which affected users to inform.",
-		"Decentralised :The data is generated, stored and processed on users' mobile devices, and transferred to a backend server, which notifies contacts when a user tests positive for COVID-19. Health authorities do not have access to the server.",
+		"Centralised: The data is generated, stored and processed on a central server operated by public health authorities. Authorities score users' risk and decide which affected users to inform.",
+		"Decentralised: The data is generated, stored and processed on users' mobile devices, and transferred to a backend server, which notifies contacts when a user tests positive for COVID-19. Health authorities do not have access to the server.",
 		"Decommissioned: App has been retired and user data deleted."
 	]
 
