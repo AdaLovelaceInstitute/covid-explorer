@@ -10,6 +10,12 @@ function init(){
 		$('#mapoverlay').hide()
 	})
 
+	$(document).click(function(event) {
+	    if (!$(event.target).is("#mapoverlay")) {
+	        $("#mapoverlay").hide();
+	    }
+	})
+
 	$('.level2nav').on('mouseout',function(e){
 		$('#helpoverlay').hide()
 	})
@@ -27,6 +33,20 @@ function init(){
 	$('#frame2viz').css({'height':height+'px'});
 	$('#frame4viz').css({'height':height+'px'});
 	$('#frame1viz').css({'height':height+'px'});
+
+
+	$('.hoverhighlight').on('mouseover',function(){
+		let tech = $(this).attr('data-id')
+		$('.countrystatusbox').css('opacity',0.25)
+		$('.' + tech).css('opacity',1)
+	});
+
+	$('.hoverhighlight').on('mouseout',function(){
+		$('.countrystatusbox').css('opacity',1)
+	});
+
+
+
 	initDataLoading()
 
 }
@@ -79,7 +99,7 @@ function initDataFrame1(data,world){
 	});
 
 	$('#frame1viz').hide();
-	$('#frame1legend2').hide()
+	$('.frame1legend2').hide()
 
 	$('#frame1navmap').on('click',function(){
 		$('#mapoverlay').hide()
@@ -87,8 +107,8 @@ function initDataFrame1(data,world){
 		$('#frame1map').show()
 		$('#frame1navmap').addClass('active2nav')
 		$('#frame1navviz').removeClass('active2nav')
-		$('#frame1legend2').hide()
-		$('#frame1legend1').show()
+		$('.frame1legend2').hide()
+		$('.frame1legend1').show()
 		map.invalidateSize();
 	});
 
@@ -98,8 +118,8 @@ function initDataFrame1(data,world){
 		$('#frame1viz').show()
 		$('#frame1navmap').removeClass('active2nav')
 		$('#frame1navviz').addClass('active2nav')
-		$('#frame1legend2').show()
-		$('#frame1legend1').hide()
+		$('.frame1legend2').show()
+		$('.frame1legend1').hide()
 	});
 
 	updateKeyStatsFrame1(data)
@@ -351,14 +371,14 @@ function initDataFrame2(data,world){
 	$('#frame2slidervalue').html(sliderLabels[17])
 
 	$('#frame2viz').hide();
-	$('#frame2legend2').hide();
+	$('.frame2legend2').hide();
 
 	$('#frame2navmap').on('click',function(){
 		$('#mapoverlay').hide()
 		$('#frame2viz').hide()
 		$('#frame2mapcontainer').show();
-		$('#frame2legend1').show();
-		$('#frame2legend2').hide();
+		$('.frame2legend1').show();
+		$('.frame2legend2').hide();
 		$('#frame2navmap').addClass('active2nav')
 		$('#frame2navviz').removeClass('active2nav')
 		map.invalidateSize();
@@ -368,8 +388,8 @@ function initDataFrame2(data,world){
 		$('#mapoverlay').hide()
 		$('#frame2mapcontainer').hide();
 		$('#frame2viz').show();
-		$('#frame2legend1').hide();
-		$('#frame2legend2').show();
+		$('.frame2legend1').hide();
+		$('.frame2legend2').show();
 		$('#frame2navmap').removeClass('active2nav')
 		$('#frame2navviz').addClass('active2nav')
 	});
@@ -557,6 +577,7 @@ function initDataFrame3(data,world){
 	$('#frame3slidervalue').html(sliderLabels[19])
 
 	$('#frame3viz').hide()
+	$('.frame3legend2').hide()
 
 	$('#frame3navmap').on('click',function(){
 		$('#mapoverlay').hide()
@@ -564,6 +585,8 @@ function initDataFrame3(data,world){
 		$('#frame3mapcontainer').show()
 		$('#frame3navmap').addClass('active2nav')
 		$('#frame3navviz').removeClass('active2nav')
+		$('.frame3legend1').show()
+		$('.frame3legend2').hide()
 		map.invalidateSize()
 	});
 
@@ -572,6 +595,8 @@ function initDataFrame3(data,world){
 		$('#frame3viz').show()
 		$('#frame3navmap').removeClass('active2nav')
 		$('#frame3navviz').addClass('active2nav')
+		$('.frame3legend1').hide()
+		$('.frame3legend2').show()
 	});
 
 	populateProtestTable(data);
@@ -588,7 +613,7 @@ function populateProtestTable(data){
 
 function initDataFrame4(data,world){
 	keyValues = [];
-	keys = ['App launched','Vaccine information','QR code','Bluetooth','Location data','GAEN API','Centralised','Decentralised','Decommissioned and relevant data have been deleted']
+	keys = ['App launched','Centralised','Decentralised','GAEN API','Bluetooth','Location data','QR code','Vaccine information','Decommissioned and relevant data have been deleted']
 
 	keys.forEach(function(key,i){
 		newValues = []
@@ -635,7 +660,7 @@ function initDataFrame4(data,world){
 		switchFrame(4,map)
 	});
 
-	$('#frame4legend2').hide()
+	$('.frame4legend2').hide()
 	$('#frame4viz').hide()
 
 	$('#frame4navmap').on('click',function(){
@@ -644,8 +669,8 @@ function initDataFrame4(data,world){
 		$('#frame4map').show();
 		$('#frame4navmap').addClass('active2nav')
 		$('#frame4navviz').removeClass('active2nav')
-		$('#frame4legend1').show()
-		$('#frame4legend2').hide()
+		$('.frame4legend1').show()
+		$('.frame4legend2').hide()
 		map.invalidateSize();
 	});
 
@@ -654,8 +679,8 @@ function initDataFrame4(data,world){
 		$('#frame4viz').show();
 		$('#frame4navmap').removeClass('active2nav')
 		$('#frame4navviz').addClass('active2nav')
-		$('#frame4legend1').hide()
-		$('#frame4legend2').show()
+		$('.frame4legend1').hide()
+		$('.frame4legend2').show()
 	});
 
 	populateFrame4Menu(keys,map)
@@ -675,7 +700,7 @@ function populateFrame4KeyStats(data){
 	$('#frame4qr').html(count+'/'+total);
 	count = getKeyStats(data,'Bluetooth');
 	$('#frame4bluetooth').html(count+'/'+total);
-	count = getKeyStats(data,'Location Data');
+	count = getKeyStats(data,'Location data');
 	$('#frame4location').html(count+'/'+total);
 	count = getKeyStats(data,'GAEN API');
 	$('#frame4gaen').html(count+'/'+total);
@@ -700,7 +725,7 @@ function populateFrame4Menu(keys,map){
 		"QR code: Users scan a QR code on entry to venues. If a user who tests positive for COVID-19 shares their results on the app, those users who have scanned the same QR code are notified.",
 		"Bluetooth: By turning on Bluetooth, users allow the app to track real-time and historical interactions with other users, and receive an alert if they come into contact with a user who tests positive for COVID-19.",
 		"Location data: App uses mobile devices’ location (GPS) to identify contacts who have been in the same locations and test positive for COVID-19.",
-		"GAEN API: API systems built by Apple and Google.",
+		"GAEN API: API systems built by Google and Apple.",
 		"Centralised: The data is generated, stored and processed on a central server operated by public health authorities. Authorities score users' risk and decide which affected users to inform.",
 		"Decentralised: The data is generated, stored and processed on users' mobile devices, and transferred to a backend server, which notifies contacts when a user tests positive for COVID-19. Health authorities do not have access to the server.",
 		"Decommissioned: App has been retired and user data deleted."
@@ -708,14 +733,14 @@ function populateFrame4Menu(keys,map){
 
 
 	keys.forEach(function(key,i){
-		let html = `<div><p><input type="radio" name="frame4layer" value="${i}" class="frame4nav"> ${key} <img id="help${i}" src="images/question-circle.svg" alt="help"></p></div>`
+		let html = `<div><p><input type="radio" name="frame4layer" value="${i}" class="frame4nav"> ${key} <img id="help${i}" class="helpimg" src="images/question-circle.svg" alt="help"></p></div>`
 		if(i==0){
 			html = `<div><p><input type="radio" name="frame4layer" value="${i}" class="frame4nav" checked> ${key}</p></div>`
 		}
 		
 		$('#frame4layers').append(html)
 
-		$('#help'+i).on('mouseover',function(event){
+		$('#help'+i).on('click',function(event){
 			console.log('over')
 			let mouseX = event.pageX
 	    	let mouseY = event.pageY
@@ -733,6 +758,12 @@ function populateFrame4Menu(keys,map){
 			$('#helpoverlay').html(text)
 			$('#helpoverlay').show()
 		});
+
+		$(document).click(function(event) {
+	    if (!$(event.target).is(".helpimg, #helpoverlay")) {
+	        $("#helpoverlay").hide();
+	    }
+});
 	});
 
 	$('.frame4nav').on('click',function(){
@@ -744,8 +775,11 @@ function populateFrame4Menu(keys,map){
 
 function populateFrame4Viz(data){
 	data.forEach(function(d,i){
+
+		let cls = getAppClass(d)
+
 		let html = `
-			<div class="countrystatusbox">
+			<div class="countrystatusbox ${cls}">
 				<p>${d['Country ISO3']}</p>
 				<div id="app_${d['Country ISO3']}" class="appiconviz">${appIcon}</div>
 			</div>`

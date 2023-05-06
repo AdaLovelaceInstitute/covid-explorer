@@ -226,7 +226,7 @@ p {
 }
 
 .nav2groupplain {
-	padding: 16px;
+	padding: 16px 16px 0px 16px;
 }
 
 .nav2 {
@@ -323,11 +323,11 @@ p {
 }
 
 .appiconviz {
-	width: 50px;
+	width: 65px;
 }
 
 .appiconviz svg {
-	width: 50px;	
+	width: 60px;	
 }
 
 input[type=range] {
@@ -607,4 +607,12 @@ h6 a {
 	#mobilemessage {
 		display: block;
 	}
+}
+
+.helpimg {
+	cursor: pointer;
+}
+
+.hoverhighlight {
+	cursor: pointer;
 }

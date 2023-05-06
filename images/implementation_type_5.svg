@@ -1,10 +1,92 @@
-<svg width="42" height="58" viewBox="0 0 42 58" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect x="16.5005" y="25.3931" width="24.0582" height="31.875" fill="#FFD139" stroke="black"/>
-<rect x="0.5" y="1.26807" width="23.5195" height="32" fill="#FFD139" stroke="black"/>
-<path d="M19.6445 29.3931C19.9207 29.3931 20.1445 29.1692 20.1445 28.8931L20.1445 24.3931C20.1445 24.1169 19.9207 23.8931 19.6445 23.8931C19.3684 23.8931 19.1445 24.1169 19.1445 24.3931L19.1445 28.3931L15.1445 28.3931C14.8684 28.3931 14.6445 28.6169 14.6445 28.8931C14.6445 29.1692 14.8684 29.3931 15.1445 29.3931L19.6445 29.3931ZM5.80074 15.7564L19.291 29.2466L19.9981 28.5395L6.50785 15.0493L5.80074 15.7564Z" fill="white"/>
-<line x1="24.0195" y1="33.7681" x2="24.0195" y2="57.0181" stroke="black"/>
-<line x1="32.2695" y1="24.8931" x2="32.2695" y2="57.7681" stroke="black"/>
-<line x1="16.5195" y1="49.2681" x2="40.5195" y2="49.2681" stroke="black"/>
-<line x1="16.5195" y1="41.2681" x2="40.5195" y2="41.2681" stroke="black"/>
-<line x1="16.5195" y1="33.2681" x2="40.5195" y2="33.2681" stroke="black"/>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="42"
+   height="58"
+   viewBox="0 0 42 58"
+   fill="none"
+   version="1.1"
+   id="svg18366"
+   sodipodi:docname="implementation_type_5.svg"
+   inkscape:version="1.2.1 (9c6d41e, 2022-07-14)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs18370" />
+  <sodipodi:namedview
+     id="namedview18368"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="4.0689655"
+     inkscape:cx="9.8305085"
+     inkscape:cy="29"
+     inkscape:window-width="1309"
+     inkscape:window-height="456"
+     inkscape:window-x="0"
+     inkscape:window-y="25"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg18366" />
+  <rect
+     x="16.5005"
+     y="25.3931"
+     width="24.0582"
+     height="31.875"
+     fill="#FFD139"
+     stroke="black"
+     id="rect18350" />
+  <rect
+     x="0.5"
+     y="1.26807"
+     width="23.5195"
+     height="32"
+     fill="#FFD139"
+     stroke="black"
+     id="rect18352" />
+  <path
+     d="M19.6445 29.3931C19.9207 29.3931 20.1445 29.1692 20.1445 28.8931L20.1445 24.3931C20.1445 24.1169 19.9207 23.8931 19.6445 23.8931C19.3684 23.8931 19.1445 24.1169 19.1445 24.3931L19.1445 28.3931L15.1445 28.3931C14.8684 28.3931 14.6445 28.6169 14.6445 28.8931C14.6445 29.1692 14.8684 29.3931 15.1445 29.3931L19.6445 29.3931ZM5.80074 15.7564L19.291 29.2466L19.9981 28.5395L6.50785 15.0493L5.80074 15.7564Z"
+     fill="white"
+     id="path18354"
+     style="fill:#000000;fill-opacity:1" />
+  <line
+     x1="24.0195"
+     y1="33.7681"
+     x2="24.0195"
+     y2="57.0181"
+     stroke="black"
+     id="line18356" />
+  <line
+     x1="32.2695"
+     y1="24.8931"
+     x2="32.2695"
+     y2="57.7681"
+     stroke="black"
+     id="line18358" />
+  <line
+     x1="16.5195"
+     y1="49.2681"
+     x2="40.5195"
+     y2="49.2681"
+     stroke="black"
+     id="line18360" />
+  <line
+     x1="16.5195"
+     y1="41.2681"
+     x2="40.5195"
+     y2="41.2681"
+     stroke="black"
+     id="line18362" />
+  <line
+     x1="16.5195"
+     y1="33.2681"
+     x2="40.5195"
+     y2="33.2681"
+     stroke="black"
+     id="line18364" />
 </svg>

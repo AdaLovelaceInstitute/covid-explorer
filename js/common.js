@@ -22,60 +22,70 @@ function setIcon(id,data){
 		$(id + ' svg').attr('opacity',0.25)
 	}
 
-	if(data['QR code']=='No'){
-		$(id + ' #qr').hide();
-	} else if(data['QR code']=='N/A'){
-		$(id + ' #qr').attr('opacity',0.25);
-	} else {
-		implementedText+= ' QR Code,'
-	}
-
-	if(data['Vaccine information']=='No'){
-		$(id + ' #vaccine').hide();
-	} else if(data['Vaccine information']=='N/A'){
-		$(id + ' #vaccine').attr('opacity',0.25);
-	} else {
-		implementedText+= ' Vaccine information,'
-	}
-
-	if(data['Bluetooth']=='No'){
-		$(id + ' #bluetooth').hide();
-	} else if(data['Bluetooth']=='N/A'){
-		$(id + ' #bluetooth').attr('opacity',0.25);
-	} else {
-		implementedText+= ' Bluetooth,'
-	}
-
-	if(data['Location data']=='No'){
-		$(id + ' #location').hide();
-	} else if(data['Location data']=='N/A'){
-		$(id + ' #location').attr('opacity',0.25);
-	} else {
-		implementedText+= ' Location Data,'
-	}
-
-	if(data['GAEN API'] =='No'){
-		$(id + ' #gaen').hide();
-	} else if(data['GAEN API']=='N/A'){
-		$(id + ' #gaen').attr('opacity',0.25);
-	} else {
-		implementedText+= ' GAEN API,'
+	if(data['Centralised']=='Yes'){
+		$(id + ' #path16').css('fill','#FFD139');
+		implementedText+= ' Centralised Technology<br />'
 	}
 
 	if(data['Decentralised']=='No'){
 		$(id + ' #decentralised').hide();
 	} else if(data['Decentralised']=='N/A'){
 		$(id + ' #decentralised').attr('opacity',0.25);
-	} else {
-		implementedText+= ' Decentralised Technology,'
+		implementedText+= 'Unknown: Decentralised Technology<br />'
+	} else if(data['Decentralised']=='Yes'){
+		implementedText+= ' Decentralised Technology<br />'
 	}
 
-	if(data['Centralised']=='Yes'){
-		$(id + ' #path16').css('fill','#FFD139');
-		implementedText+= ' Centralised Technology,'
+	if(data['GAEN API'] =='No'){
+		$(id + ' #gaen').hide();
+	} else if(data['GAEN API']=='N/A'){
+		$(id + ' #gaen').attr('opacity',0.25);
+		implementedText+= 'Unknown: GAEN API<br />'
+	} else if(data['GAEN API'] =='Yes'){
+		implementedText+= ' GAEN API<br />'
+	}	
+
+	if(data['QR code']=='No'){
+		$(id + ' #qr').hide();
+	} else if(data['QR code']=='N/A'){
+		$(id + ' #qr').attr('opacity',0.25);
+		implementedText+= 'Unknown: QR Code<br />'
+	} else if(data['QR code']=='Yes'){
+		implementedText+= ' QR Code<br />'
 	}
+
+	if(data['Bluetooth']=='No'){
+		$(id + ' #bluetooth').hide();
+	} else if(data['Bluetooth']=='N/A'){
+		$(id + ' #bluetooth').attr('opacity',0.25);
+		implementedText+= 'Unknown: Bluetooth<br />'
+	} else if(data['Bluetooth']=='Yes'){
+		implementedText+= ' Bluetooth<br />'
+	}
+
+	if(data['Location data']=='No'){
+		$(id + ' #location').hide();
+	} else if(data['Location data']=='N/A'){
+		$(id + ' #location').attr('opacity',0.25);
+		implementedText+= 'Unknown: Location Data<br />'
+	} else if(data['Location data']=='Yes'){
+		implementedText+= ' Location Data<br />'
+	}
+
+	if(data['Vaccine information']=='No'){
+		$(id + ' #vaccine').hide();
+	} else if(data['Vaccine information']=='N/A'){
+		$(id + ' #vaccine').attr('opacity',0.25);
+		implementedText+= 'Unknown: Vaccine information<br />'
+	} else if(data['Vaccine information']=='Yes'){
+		implementedText+= ' Vaccine information<br />'
+	}
+
 	console.log(implementedText)
 	$(id + ' .implementedtech').html(implementedText)
+	if(implementedText==''){
+		implementedText='No technologies'
+	}
 	return implementedText
 }
 
@@ -268,8 +278,42 @@ function populateCountryDrop(data){
 	});
 }
 
+function getAppClass(data){
+	let cls = ''
+	if(data['QR code']=='Yes'){
+		cls+='qr '
+	}
 
+	if(data['Vaccine information']=='Yes'){
+		cls+='vaccine '
+	}
 
+	if(data['Bluetooth']=='Yes'){
+		cls+='bluetooth '
+	}
+
+	if(data['Location data']=='Yes'){
+		cls+='location '
+	}
+
+	if(data['GAEN API'] =='Yes'){
+		cls+='gaen '
+	}
+
+	if(data['Decentralised']=='Yes'){
+		cls+='decentralised '
+	}
+
+	if(data['Centralised']=='Yes'){
+		cls+='centralised '
+	}
+
+	if(data['data_deleted']=='Yes'){
+		cls+='deleted '
+	}
+
+	return cls
+}
 
 
 
