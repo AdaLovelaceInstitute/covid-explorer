@@ -35,12 +35,12 @@ function populateCountryMenu(data){
 
 
 function initPage(data){
-
+	console.log(data)
 	$('#countryname').html(data.vaccine_passport[0]['Country'])
 	createContextGraph(data)
 	processStatusChart(data)
 	createAppIcon(data)
-	populateQualData(data['qualitative'])
+	populateQualData(data['protests'],data['qualitative'])
 	populateDigitalSkills(data)
 	populateVaccineSupply(data.vaccine_supply)
 }
@@ -233,14 +233,19 @@ function createAppText(data){
 	}
 }
 
-function populateQualData(data){
+function populateQualData(protestdata,qualdata){
 
-	data.forEach(function(d){
-
+	qualdata.forEach(function(d){
 		let html = `<tr><td><p>${d['Type']}</p></td><td><p>${d['Text']}</p></td><td><p><a href="${d['Link']}" target="_blank">Read More</a></p></td></tr>`
 		$('#qualtable').append(html)
 	});
-	if(data.length==0){
+
+	protestdata.forEach(function(d){
+		let html = `<tr><td><p>Protest</p></td><td><p>${d['Protest Notes']}</p></td><td><p><a href="${d['Link']}" target="_blank">Read More</a></p></td></tr>`
+		$('#qualtable').append(html)
+	});
+
+	if(qualdata.length+protestdata.length==0){
 		$('#entries').html('<p>No entries in database</p>')
 	}
 }
