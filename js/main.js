@@ -721,26 +721,26 @@ function populateFrame4Menu(keys,map){
 
 
 	let definitions = [
-		"Vaccine information: App has been expanded to include vaccine status information, functioning both as a contact tracing app and vaccine passport.",
-		"QR code: Users scan a QR code on entry to venues. If a user who tests positive for COVID-19 shares their results on the app, those users who have scanned the same QR code are notified.",
-		"Bluetooth: By turning on Bluetooth, users allow the app to track real-time and historical interactions with other users, and receive an alert if they come into contact with a user who tests positive for COVID-19.",
-		"Location data: App uses mobile devices’ location (GPS) to identify contacts who have been in the same locations and test positive for COVID-19.",
-		"GAEN API: API systems built by Google and Apple.",
 		"Centralised: The data is generated, stored and processed on a central server operated by public health authorities. Authorities score users' risk and decide which affected users to inform.",
 		"Decentralised: The data is generated, stored and processed on users' mobile devices, and transferred to a backend server, which notifies contacts when a user tests positive for COVID-19. Health authorities do not have access to the server.",
+		"GAEN API: API systems built by Google and Apple.",
+		"Bluetooth: By turning on Bluetooth, users allow the app to track real-time and historical interactions with other users, and receive an alert if they come into contact with a user who tests positive for COVID-19.",
+		"Location data: App uses mobile devices’ location (GPS) to identify contacts who have been in the same locations and test positive for COVID-19.",
+		"QR code: Users scan a QR code on entry to venues. If a user who tests positive for COVID-19 shares their results on the app, those users who have scanned the same QR code are notified.",
+		"Vaccine information: App has been expanded to include vaccine status information, functioning both as a contact tracing app and vaccine passport.",
 		"Decommissioned: App has been retired and user data deleted."
 	]
 
 
 	keys.forEach(function(key,i){
-		let html = `<div><p><input type="radio" name="frame4layer" value="${i}" class="frame4nav"> ${key} <img id="help${i}" class="helpimg" src="images/question-circle.svg" alt="help"></p></div>`
+		let html = `<div><p><input type="radio" name="frame4layer" value="${i}" class="frame4nav"> ${key} <img class="helpimg help${i}" src="images/question-circle.svg" alt="help"></p></div>`
 		if(i==0){
 			html = `<div><p><input type="radio" name="frame4layer" value="${i}" class="frame4nav" checked> ${key}</p></div>`
 		}
 		
 		$('#frame4layers').append(html)
 
-		$('#help'+i).on('click',function(event){
+		$('.help'+i).on('click',function(event){
 			console.log('over')
 			let mouseX = event.pageX
 	    	let mouseY = event.pageY

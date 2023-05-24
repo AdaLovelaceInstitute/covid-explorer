@@ -70,9 +70,15 @@
                                 </div>
                                 <div class="nav2groupplain frame1legend1">
                                     <p>Find out when digital vaccine passports were deployed around the world.</p>
+                                    <p>Some countries, which do not have national or federal vaccine passports, are not included in this visualisation. e.g., Russia and the USA.</p>
                                 </div>
                                 <div class="nav2groupplain frame1legend2">
                                     <p>Compare the number of COVID-19 cases, deaths and vaccination rates against the introduction of vaccine passport systems by countries.</p>
+                                    <ul>
+                                        <li><p>Countries with larger green quadrants introduced digital vaccine passports when more of the population was vaccinated</p></li>
+
+                                        <li><p>Countries with larger purple quadrants introduced digital vaccine passports when cases of COVID-19 and deaths and were higher</p></li>
+                                    </ul>
                                 </div>
                                 <div class="nav2groupplain">                                  
                                     <h5>Countries in dataset:</h5>
@@ -92,12 +98,11 @@
                                     <h5>Key insights</h5>
                                     <p>There was a considerable difference in when vaccine passports were developed and deployed across the world. Vaccine passports were introduced in:</p>
                                     <ul>
-                                        <li><p>Many Asian countries in quarter 1 2021</p></li>
-                                        <li><p>The majority of European countries in quarter 2 2021</p></li>
-                                        <li><p>North and South America from quarter 2 2021</p></li>
-                                        <li><p>Oceana from quarter 3 2021</p></li>
+                                        <li><p>Many Asian countries in Quarter 1, 2021</p></li>
+                                        <li><p>The majority of European countries in Quarter 2, 2021</p></li>
+                                        <li><p>North and South America from Quarter 2, 2021</p></li>
+                                        <li><p>Oceana from Quarter 3, 2021</p></li>
                                     </ul>
-                                    <p>Some countries, which do not have national or federal vaccine passports, are not included in this dataset. e.g., Russia and the USA.</p>
                                 </div>
                                 <div class="nav2groupplain frame1legend2">
                                     <h5>Legend</h5>
@@ -105,6 +110,7 @@
                                     <p><i class="colourkeyblock" style="background-color:#7C2C77;opacity:50%"></i>Death rate 7 day average</p>
                                     <p><i class="colourkeyblock" style="background-color:#00E1B3"></i>Number of people vaccinated</p>
                                     <p><i class="colourkeyblock" style="background-color:#00E1B3;opacity:40%"></i>Number of people fully vaccinated</p>
+                                    <p><b>NB</b> Data on COVID-19 cases and deaths, and vaccination rates was collected from 34 countries but in some cases e.g., China, low rates mean that the data has been rounded to zero.</p>
                                 </div>
                             </div>
                             <div id="frame1data" class="col-md-9 level2frame">
@@ -132,16 +138,16 @@
                                 <div class="nav2groupplain frame2legend1">
                                     <h5>Countries in dataset:</h5>
                                     <p class="p3"><span id="frame2allcountries"></span></p>
-                                    <i class="colourkeyblocklarge" style="background-color:#c43b3d;"></i>
+                                    <i class="colourkeyblock" style="background-color:#c43b3d;"></i>
                                     <h5>Countries that made 4–5 changes to policies:</h5>
                                     <p class="p3"><span id="frame24countries"></span></p>
-                                    <i class="colourkeyblocklarge" style="background-color:#d3a522;"></i>
+                                    <i class="colourkeyblock" style="background-color:#d3a522;"></i>
                                     <h5>Countries that made 3 changes to policies:</h5>
                                     <p class="p3"><span id="frame23countries"></span></p>
-                                    <i class="colourkeyblocklarge" style="background-color:#ffd139;"></i>
+                                    <i class="colourkeyblock" style="background-color:#ffd139;"></i>
                                     <h5>Countries that made 2 changes to policies:</h5>
                                     <p class="p3"><span id="frame22countries"></span></p>
-                                    <i class="colourkeyblocklarge" style="background-color:#ffe89c;"></i>
+                                    <i class="colourkeyblock" style="background-color:#ffe89c;"></i>
                                     <h5>Countries that made 1 changes to policies:</h5>
                                     <p class="p3"><span id="frame21countries"></span></p>
                                 </div>
@@ -169,7 +175,7 @@
                                 <div id="frame2mapcontainer" class="mapcontainer">
                                     <div id="frame2map" class="datamap"></div>
                                     <div class="slidecontainer">
-                                        <p>Use slider to check the status at different points of time</p>
+                                        <p>Use the slider to check the status at different points of time</p>
                                         <input type="range" min="1" max="18" value="18" class="slider" id="dataframe2slider"><span id="frame2slidervalue" class="sliderp"></span>
                                     </div>
                                 </div>
@@ -213,7 +219,7 @@
                                     </div>
                                 </div>
                                 <div class="nav2groupplain">
-                                    <p>Discover which countries experienced protests against restrictions facilitated by vaccine passport policies.</p>
+                                    <p>Discover which countries experienced protests against restrictions imposed by vaccine passport policies.</p>
                                 </div>                                
                                 <div class="nav2groupplain">
                                     <h5>Countries in dataset:</h5>
@@ -309,22 +315,22 @@
                                         <p class="hoverhighlight" data-id="qr">5. QR code</p>
                                         <p class="hoverhighlight" data-id="location">6. Location data</p>
                                         <p class="hoverhighlight" data-id="bluetooth">7. Bluetooth standard</p>
-                                        <p>Greyed out features means the implementation status is unknown</p>
+                                        <p><b>NB</b> Greyed out icons indicate that no data is available </p>
                                     </div>
                                     <div class="topspace">
-                                        <h5>Centralised:</h5>
+                                        <h5>Centralised: <img class="helpimg help1" src="images/question-circle.svg" alt="help"></h5>
                                         <p class="p3"><span id="frame4centralised"></span></p>
-                                        <h5>Decentralised:</h5>
+                                        <h5>Decentralised: <img class="helpimg help2" src="images/question-circle.svg" alt="help"></h5>
                                         <p class="p3"><span id="frame4decentralised"></span></p>
-                                        <h5>GAEN API:</h5>
+                                        <h5>GAEN API: <img class="helpimg help3" src="images/question-circle.svg" alt="help"></h5>
                                         <p class="p3"><span id="frame4gaen"></span></p>
-                                        <h5>Bluetooth technology:</h5>
+                                        <h5>Bluetooth technology: <img class="helpimg help4" src="images/question-circle.svg" alt="help"></h5>
                                         <p class="p3"><span id="frame4bluetooth"></span></p>
-                                        <h5>Location data:</h5>
+                                        <h5>Location data: <img class="helpimg help5" src="images/question-circle.svg" alt="help"></h5>
                                         <p class="p3"><span id="frame4location"></span></p>
-                                        <h5>QR codes:</h5>
+                                        <h5>QR codes: <img class="helpimg help6" src="images/question-circle.svg" alt="help"></h5>
                                         <p class="p3"><span id="frame4qr"></span></p>  
-                                        <h5>Store vaccine information:</h5>
+                                        <h5>Store vaccine information: <img class="helpimg help7" src="images/question-circle.svg" alt="help"></h5>
                                         <p class="p3"><span id="frame4vaccine"></span></p>
                                     </div>
                                 </div>

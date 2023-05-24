@@ -31,7 +31,7 @@ function setIcon(id,data){
 		$(id + ' #decentralised').hide();
 	} else if(data['Decentralised']=='N/A'){
 		$(id + ' #decentralised').attr('opacity',0.25);
-		implementedText+= 'Unknown: Decentralised Technology<br />'
+		implementedText+= 'No Data: Decentralised Technology<br />'
 	} else if(data['Decentralised']=='Yes'){
 		implementedText+= ' Decentralised Technology<br />'
 	}
@@ -40,7 +40,7 @@ function setIcon(id,data){
 		$(id + ' #gaen').hide();
 	} else if(data['GAEN API']=='N/A'){
 		$(id + ' #gaen').attr('opacity',0.25);
-		implementedText+= 'Unknown: GAEN API<br />'
+		implementedText+= 'No Data: GAEN API<br />'
 	} else if(data['GAEN API'] =='Yes'){
 		implementedText+= ' GAEN API<br />'
 	}	
@@ -49,7 +49,7 @@ function setIcon(id,data){
 		$(id + ' #qr').hide();
 	} else if(data['QR code']=='N/A'){
 		$(id + ' #qr').attr('opacity',0.25);
-		implementedText+= 'Unknown: QR Code<br />'
+		implementedText+= 'No Data: QR Code<br />'
 	} else if(data['QR code']=='Yes'){
 		implementedText+= ' QR Code<br />'
 	}
@@ -58,7 +58,7 @@ function setIcon(id,data){
 		$(id + ' #bluetooth').hide();
 	} else if(data['Bluetooth']=='N/A'){
 		$(id + ' #bluetooth').attr('opacity',0.25);
-		implementedText+= 'Unknown: Bluetooth<br />'
+		implementedText+= 'No Data: Bluetooth<br />'
 	} else if(data['Bluetooth']=='Yes'){
 		implementedText+= ' Bluetooth<br />'
 	}
@@ -67,7 +67,7 @@ function setIcon(id,data){
 		$(id + ' #location').hide();
 	} else if(data['Location data']=='N/A'){
 		$(id + ' #location').attr('opacity',0.25);
-		implementedText+= 'Unknown: Location Data<br />'
+		implementedText+= 'No Data: Location Data<br />'
 	} else if(data['Location data']=='Yes'){
 		implementedText+= ' Location Data<br />'
 	}
@@ -76,7 +76,7 @@ function setIcon(id,data){
 		$(id + ' #vaccine').hide();
 	} else if(data['Vaccine information']=='N/A'){
 		$(id + ' #vaccine').attr('opacity',0.25);
-		implementedText+= 'Unknown: Vaccine information<br />'
+		implementedText+= 'No Data: Vaccine information<br />'
 	} else if(data['Vaccine information']=='Yes'){
 		implementedText+= ' Vaccine information<br />'
 	}
