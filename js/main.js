@@ -16,9 +16,9 @@ function init(){
 	    }
 	})
 
-	$('.level2nav').on('mouseout',function(e){
+	/*$('.level2nav').on('mouseout',function(e){
 		$('#helpoverlay').hide()
-	})
+	})*/
 
 	$('#frame_2').hide()
 	$('#frame_3').hide()
@@ -745,9 +745,9 @@ function populateFrame4Menu(keys,map){
 			let mouseX = event.pageX
 	    	let mouseY = event.pageY
 
-	    	if(mouseY>window.innerHeight-200){
+	    	/*if(mouseY>window.innerHeight-200){
 	    		mouseY = window.innerHeight-200
-	    	}
+	    	}*/
 
 
 	    	console.log(mouseX)
