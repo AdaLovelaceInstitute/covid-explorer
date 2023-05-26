@@ -613,7 +613,7 @@ function populateProtestTable(data){
 
 function initDataFrame4(data,world){
 	keyValues = [];
-	keys = ['App launched','Centralised','Decentralised','GAEN API','Bluetooth','Location data','QR code','Vaccine information','Decommissioned and relevant data have been deleted']
+	keys = ['App launched','Centralised','Decentralised','GAEN API','Bluetooth','Location data','QR code','Vaccine information','Decommissioned and relevant data has been deleted']
 
 	keys.forEach(function(key,i){
 		newValues = []
