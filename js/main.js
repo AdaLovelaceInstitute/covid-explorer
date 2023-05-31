@@ -396,6 +396,14 @@ function initDataFrame2(data,world){
 
 	populateDataFrame2Viz(data)
 	updateKeyStatsFrame2(data)
+
+	const queryString = window.location.search;
+	const urlParams = new URLSearchParams(queryString);
+	const section = urlParams.get('section')
+
+	if(section==2){
+		switchFrame(2,map);
+	}
 }
 
 function updateKeyStatsFrame2(data){
@@ -600,6 +608,14 @@ function initDataFrame3(data,world){
 	});
 
 	populateProtestTable(data);
+
+	const queryString = window.location.search;
+	const urlParams = new URLSearchParams(queryString);
+	const section = urlParams.get('section')
+
+	if(section==4){
+		switchFrame(3,map);
+	}
 }
 
 function populateProtestTable(data){
@@ -686,6 +702,15 @@ function initDataFrame4(data,world){
 	populateFrame4Menu(keys,map)
 	populateFrame4Viz(data)
 	populateFrame4KeyStats(data)
+
+	const queryString = window.location.search;
+	const urlParams = new URLSearchParams(queryString);
+	const section = urlParams.get('section')
+
+	if(section==3){
+		switchFrame(4,map);
+	}
+
 }
 
 function populateFrame4KeyStats(data){
