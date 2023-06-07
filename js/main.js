@@ -309,7 +309,7 @@ function initDataFrame2(data,world){
 			isoCodes.push(d['Country ISO3']);
 		}
 	});
-	for(let i =0;i<18;i++){
+	for(let i =0;i<24;i++){
 		keyValues[i]=[]
 		isoCodes.forEach(function(iso){
 			keyValues[i].push({'key':iso,'value':0});
@@ -337,7 +337,7 @@ function initDataFrame2(data,world){
 
 		let found = false
 		$('#mapoverlay').html('<p>Not in dataset</p>')
-		keyValues[17].forEach(function(d){
+		keyValues[23].forEach(function(d){
 			if(d['key']==iso){
 				let html = `
 					<h6><a href="country.html?iso=${d['key']}" target="_blank">${d['country']}</a></h6>
@@ -360,7 +360,7 @@ function initDataFrame2(data,world){
 		switchFrame(2,map);
 	});
 
-	let sliderLabels = ['Jan 21','Feb 21','Mar 21','Apr 21','May 21','Jun 21','Jul 21','Aug 21','Sep 21','Oct 21','Nov 21','Dec 21','Jan 22','Feb 22','Mar 22','Apr 22','May 22','Jun 22']
+	let sliderLabels = ['Jan 21','Feb 21','Mar 21','Apr 21','May 21','Jun 21','Jul 21','Aug 21','Sep 21','Oct 21','Nov 21','Dec 21','Jan 22','Feb 22','Mar 22','Apr 22','May 22','Jun 22','Jul 22','Aug 22','Sep 22','Oct 22','Nov 22','Dec 22']
 
 	$('#dataframe2slider').on('change',function(){
 		let layer = $(this).val();
@@ -368,7 +368,7 @@ function initDataFrame2(data,world){
 		$('#frame2slidervalue').html(sliderLabels[layer-1])
 	})
 
-	$('#frame2slidervalue').html(sliderLabels[17])
+	$('#frame2slidervalue').html(sliderLabels[23])
 
 	$('#frame2viz').hide();
 	$('.frame2legend2').hide();
